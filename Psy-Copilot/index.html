@@ -600,6 +600,12 @@
                           <br><br>
                       </div>
                       <div class="slide">
+                        <img src="./images/psy-copilot/graph.png" alt="First Slide">
+                        <br><br>
+                        <p style="text-align: left; padding-bottom: 15px;">A small sub-graph of Psy-COT graph in Neo4j. Our graph and dataset are open-sourced on Github. You can try and interact with Psy-COT by buttons on homepage.</p>
+                        <br><br>
+                    </div>
+                      <div class="slide">
                           <img src="./images/psy-copilot/previous.png" alt="Second Slide">
                           <br><br>
                           <p style="text-align: left; padding-bottom: 15px;">Previous Works on Knowledge Graph (KG).</p>
@@ -614,9 +620,7 @@
                         <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Visualizing the Thought Process</p>
                         <p align="left">Psy-COT presents a graphical representation of the thought process in psychological counseling dialogues, allowing therapists to intuitively understand the reasoning behind AI models. It displays semi-structured counseling conversations alongside step-by-step annotations that capture the reasoning and insights of therapists, enhancing the transparency of AI decision-making. Unlike traditional knowledge graphs, Psy-COT emphasizes the logical chain of causality in events and the temporal evolution of strategies in counseling, rather than just the inclusion relationships between entities.</p>
                         <br><br>
-                        <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Open open-sourced Interactive Platform</p>
-                        <p align="left">Combined with Psy-Copilot, Psy-COT has built an interactive platform that offers a user-friendly interface for therapists to engage with the AI system. During each dialogue round, the platform dynamically retrieves and displays relevant sub-graphs, making it easier for therapists to understand the logic chain behind AI-generated responses. This interactive experience not only strengthens therapists' trust in the AI system but also fosters collaboration between AI and human therapists, advancing mental health development.</p>
-                        <br><br><br><br>
+
                     
                       </div>
                       
@@ -635,6 +639,7 @@
                   <!-- 按钮 -->
                   <div class="slider-btns">
                       <button class="slider-btn active" onclick="currentSlide(1,'slider2')">Example of Psy-COT graph</button>
+                      <button class="slider-btn active" onclick="currentSlide(1,'slider2')">Example of Psy-COT graph (Neo4j)</button>
                       <button class="slider-btn" onclick="currentSlide(2,'slider2')">Example of previous KG</button>
                       <button class="slider-btn" onclick="currentSlide(3,'slider2')">Contribution of Psy-COT</button>
                       <!-- <button class="slider-btn" onclick="currentSlide(3,'slider2')">LlaMA-2 13B Chat</button>
@@ -664,7 +669,7 @@
     <!-- Take away-->
     <div class="columns is-centered has-text-centered">
       <div class="column is-six-fifths">
-        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Contribution <div class="triangle-down"></div></h2>
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Take away <div class="triangle-down"></div></h2>
         <!--轮播图-->
         <section class="section">
           <div class="container is-max-desktop content">
@@ -676,19 +681,21 @@
                   <div class="slides">
                       <div class="slide">
                         <ul style="padding-left: 40px; list-style-type: none; text-align: left; padding-right: 60px;">
-                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. The effectiveness of Psy-Copilot's two-stage retrieval argument generation process is evident in the high scores, suggesting that the combination of dialogue and reasoning content retrieval is a robust approach for generating counseling responses.</span></li>
-                          <!-- The open-sourcing of Psy-Copilot's code and demo can accelerate research and development in AI-assisted therapy, allowing for broader collaboration and innovation within the field. -->
-
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. The Psy-Copilot's can allow for broader AI-Therapist collaboration in the field of emotional support conversation.</span></li>
+                          <br><br>
+                          <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Open open-sourced Interactive Platform</p>
+                          <p align="left">Combined with Psy-Copilot, Psy-COT has built an interactive platform that offers a user-friendly interface for therapists to engage with the AI system. During each dialogue round, the platform dynamically retrieves and displays relevant sub-graphs, making it easier for therapists to understand the logic chain behind AI-generated responses. This interactive experience not only strengthens therapists' trust in the AI system but also fosters collaboration between AI and human therapists, advancing mental health development.</p>
+                          <br><br>
                         </ul>
                       </div>
                       <div class="slide">
                         <ul style="padding-left: 40px; list-style-type: none; padding-right: 60px;text-align: left;">
-                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. Surprisingly, "overconfident" agents lose that trait in groups!</span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. Setting agent numbers to 3 is generally advantageous in performance and cost.</span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">3. The rounds of collaboration is relatively suitable to set as 3, both effective and efficient.</span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">4. Employing the uniform thinking patterns across all agents within a round enhance efficacy.</span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">5. Scaling up the number of agents is better than scaling up the number of collaboration rounds.</span></li>
+                          
+                          <br><br>
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. The effectiveness of Psy-Copilot's two-stage retrieval argument generation process is evident in the high scores, suggesting that the combination of dialogue and reasoning content retrieval is a robust approach for generating counseling responses.</span></li>
+                          <!-- The open-sourcing of Psy-Copilot's code and demo can accelerate research and development in AI-assisted therapy, allowing for broader collaboration and innovation within the field. -->
+
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. The Psy-Copilot's can allow for broader AI-Therapist collaboration in the field of emotional support conversation.</span></li>
+                          <br><br>
                         </ul>
                         <br><br><br>
                       </div>
