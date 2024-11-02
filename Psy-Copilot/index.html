@@ -390,59 +390,60 @@
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <!-- code2024/Psy-Copilot/docs/psy-copilot/doc/Psy_Copilot__Visual_Chain_Of_Thought_for_Counseling.pdf -->
-                <a href="https://anonymous.4open.science/r/Psy-Copilot-6EA1/docs/paper/Psy_Copilot__Visual_Chain_Of_Thought_for_Counseling.pdf" 
-                   class="external-link button is-normal is-rounded">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <!-- Huggingface Paper-->
-              <span class="link-block">
-                <a href="https://anonymous.4open.science/r/Psy-Copilot-6EA1/docs/data/Psy-COT-Graph.svg" 
-                   class="external-link button is-normal is-rounded">
-                  <span class="icon">
-                    <img src="./static/images/KnowLM.png" alt="Drive" style="height: 19px; width: 21px; vertical-align: middle;"/>
-                  </span>
-                  <span>Psy-COT Graph</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://anonymous.4open.science/r/Psy-Copilot-6EA1/README.md" target="_blank" 
-                   class="external-link button is-normal is-rounded">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              <!-- Google Drive Link. -->
-
-              <span class="link-block">
-                <a href="https://anonymous.4open.science/r/Psy-Copilot-6EA1/docs/data/README.md" target="_blank" 
-                  class="external-link button is-normal is-rounded">
-                  <span class="icon">
-                      <img src="./static/images/drive.png" alt="Drive" style="height: 17px; width: 17px; vertical-align: middle;"/>
-                  </span>
-                <span>Dataset</span>
-                </a>
-              </span>
-              <!--Twitter-->
-              <span class="link-block">
-                <a href="https://anonymous.4open.science/r/Psy-Copilot-6EA1/docs/data/" target="_blank" 
-                  class="external-link button is-normal is-rounded">
-                  <span class="icon">
-                      <img src="./images/twitter.png" alt="Drive" style="height: 17px; width: 17px; vertical-align: middle;"/>
-                  </span>
-                <span>Demo</span>
-                </a>
-              </span>
+                <!-- Github Link. -->
+                <span class="link-block">
+                    <a href="https://anonymous.4open.science/r/Psy-Insight-F65E" 
+                       class="external-link button is-normal is-rounded">
+                        <span class="icon">
+                            <i class="fab fa-github"></i>
+                        </span>
+                        <span>Github</span>
+                    </a>
+                </span>
+                <!-- Evaluation Link. -->
+                <span class="link-block">
+                    <a href="https://anonymous.4open.science/r/Psy-Insight-F65E/expert-eval/README.md" 
+                       class="external-link button is-normal is-rounded">
+                        <span class="icon">
+                            <!-- <img src="./static/images/evaluation.png" alt="Evaluation" style="height: 19px; width: 21px; vertical-align: middle;"/> -->
+                            📝
+                        </span>
+                        <span>Evaluation Guide</span>
+                    </a>
+                </span>
+                <!-- Paper Link. -->
+                <span class="link-block">
+                    <a href="https://anonymous.4open.science/w/Anonymous-Demo-Page-CF8E/static/pdfs/psy-insight.pdf" 
+                       class="external-link button is-normal is-rounded">
+                        <span class="icon">
+                            <i class="ai ai-arxiv"></i>
+                        </span>
+                        <span>Paper</span>
+                    </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                    <a href="https://anonymous.4open.science/r/Psy-Insight-F65E/data/README.md" 
+                       class="external-link button is-normal is-rounded">
+                        <span class="icon">
+                            <img src="./static/images/dataset.png" alt="Dataset" style="height: 17px; width: 17px; vertical-align: middle;"/>
+                        </span>
+                        <span>Dataset</span>
+                    </a>
+                </span>
+                <!-- Copyright Link. -->
+                <span class="link-block">
+                    <a href="https://anonymous.4open.science/r/Psy-Insight-F65E/docs/data_source/data_source.md" 
+                       class="external-link button is-normal is-rounded">
+                        <span class="icon">
+                          ⚠️
+                            <!-- <img src="./static/images/copyright.png" alt="Copyright" style="height: 17px; width: 17px; vertical-align: middle;"/> -->
+                        </span>
+                        <span>Copyright</span>
+                    </a>
+                </span>
             </div>
+        </div>
 
 
 
@@ -468,7 +469,7 @@
     <div class="hero-body">
       <img id="teaser" width="120%" src="./images/gif.gif">
       <h2>
-        An example of the <b>chess move validity</b> task. Given previous chess game moves, agents are required to predict a valid next move for a specified piece.
+        This animation illustrate the sliding windows algorithm. We use the sliding windows algorithm to extract the mental support conversation and its explanatory labels.
       </h2>
     </div>
   </div>
@@ -483,7 +484,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Large language models (LLMs) are becoming increasingly popular in the field of psychological counseling. However, when human therapists work with LLMs in therapy sessions, it is hard to understand how the model gives the answers. To address this, we have constructed <strong><i style="color: red;"></i>Psy-COT</i></strong>, a graph designed to visualize the thought processes of LLMs during therapy sessions.  The Psy-COT graph presents semi-structured counseling conversations alongside step-by-step annotations that capture the reasoning and insights of therapists. Moreover, we have developed <strong><i style="color: red;"></i>Psy-Copilot</i></strong>, which is a conversational AI assistant designed to assist human psychological therapists in their consultations. It can offer traceable psycho-information based on retrieval, including response candidates, similar dialogue sessions, related strategies, and visual traces of results. We have also built an interactive platform for AI-assisted counseling. It has an interface that displays the relevant parts of the retrieval sub-graph. The Psy-Copilot is designed not to replace psychotherapists, but to foster collaboration between AI and human therapists, thereby promoting mental health development. Our code and demo are both open-sourced and available for use.
+            The datasets of mental support are particularly scarce, especially for Chinese multi-turn dialogue. The Psy-Insight dataset alleviates the scarcity of multi-turn Chinese and English counseling data. The Psy-Insight includes bilingual labels for five types of tasks in emotional support. However, we only conducted experiments in Chinese and English for dialogue fine-tuning (Task 3) and RAG(Task 4) tasks. 
             <!-- As Natural Language Processing (NLP) systems are increasingly employed in intricate social environments, a pressing query emerges: <strong><i style="color: red;">Can these NLP systems mirror human-esque collaborative intelligence, in a multi-agent society consisting of multiple large language models (LLMs)?</i></strong> This paper probes the collaboration mechanisms among contemporary NLP systems by melding practical experiments with theoretical insights. 
             We fabricate four unique 'societies' comprised of LLM agents, 
             where each agent is characterized by a specific 'trait' ( 

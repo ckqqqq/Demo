@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script>
+<script src='https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js'></script>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Psy-Copilot: Visual Chain of Thought for Counseling">
+  <meta name="keywords" content="Multi-agent, Social Psychology, Collaboration">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Psy-Copilot: Visual Chain of Thought for Counseling</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="icon" href="./static/images/logo.png">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+
+  quotebody {
+        font-family: 'Times New Roman', serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        margin: 0;
+        background-color: #fff;
+        color: #333;
+        text-align: left; /* Centering text */
+    }
+
+    .quote-container {
+        max-width: 600px;
+        padding: 20px;
+    }
+
+    .quote {
+        font-size: 20px;
+        font-style: italic;
+        margin: 0;
+    }
+
+    .author {
+        font-size: 16px;
+        margin-top: 20px; /* Space between quote and author */
+        text-align: right;
+    }
+
+    /*上面是名言*/
+
+    .triangle-down {
+        width: 0;
+        height: 0;
+        display: inline-block;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 20px solid black; /* Adjust the color as needed */
+        margin-left: 5px; /* Optional, for spacing */
+        vertical-align: middle;
+    }
+    .collapsed {
+      display: none;
+      transition: height 0.3s ease-out;
+    }
+/* 轮播图样式 */
+/* 轮播图样式 */
+      .slider {
+            width: 100%;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            transition: 0.6s ease-in-out;
+        }
+
+        .slider-btns {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex; /* 使用Flexbox布局 */
+    justify-content: center; /* 水平居中所有按钮 */
+    flex-wrap: nowrap; /* 防止按钮换行 */
+        }
+
+        .slider-btn {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #ddd;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            white-space: nowrap; /* 防止文本换行 */
+            height: 30px;
+        }
+
+        .slider-btn.active {
+            background-color: #333;
+            color: white;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 24px;
+            color: white;
+            background-color: black;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            user-select: none;
+            z-index: 2;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+    /* 轮播图图片自适应样式 */
+  .carousel img {
+    max-width: 100%;
+    height: auto;
+  }
+  .carousel img {
+    width: 100%;
+    height: auto;
+    display: block; /* 确保图片不会有额外的空间 */
+  }
+
+  .carousel .item-1, .carousel .item-2, .carousel .item-3 {
+    width: 100%; /* 每项的宽度与轮播容器相同 */
+    height: auto;
+  }
+  .carousel {
+    width: 100%; /* 或者其他具体宽度 */
+    overflow: hidden; /* 隐藏超出容器的部分 */
+    height: auto;
+  }
+  .carousel-text {
+    /* 根据需要添加样式 */
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .carousel-buttons {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.carousel-button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  background-color: #367c39;
+}
+
+.double-underline {
+    text-decoration: underline;
+    position: relative;
+  }
+
+  .double-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.8px; /* 调整这个值来改变两条下划线之间的距离 */
+    width: 100%;
+    border-bottom: 1px solid; /* 下划线的样式 */
+    height: 1px;
+  }
+
+
+  /* 轮播图容器样式，可根据需要调整 */
+  .carousel-container {
+    width: 100%; /* 或其他固定宽度 */
+    margin: auto;
+    height: auto;
+  }
+
+		/* Define the grid layout */
+		.mygrid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-gap: 20px;
+			width: 80%;
+			margin: auto;
+		}
+		.grid_item {
+      background: #FFFFFF;
+      opacity: 1;
+    }
+
+		/* Define the size of the GIFs */
+		.mygif {
+			height: auto;
+			cursor: pointer;
+		}
+		
+		/* Define the modal styles */
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0,0,0,0.9);
+		}
+		
+		.modal-content {
+			margin: auto;
+			display: block;
+			width: 80%;
+			max-width: 800px;
+			max-height: 80%;
+		}
+
+    /* Define the full-screen overlay styles */
+		.overlay {
+			position: fixed;
+			z-index: 999;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background-color: rgba(0,0,0,0.9);
+			display: none;
+		}
+		
+		.overlay img {
+			width: auto;
+			height: 90%;
+			margin: 0 auto;
+			display: block;
+			max-width: 90%;
+			max-height: 90%;
+		}
+
+    /* Define the video styles */
+		.gifvideo {
+			width: 100%;
+			height: auto;
+		}
+
+		/* Define the progress bar styles */
+		.progress {
+			width: 100%;
+			height: 10px;
+			background-color: #ddd;
+			position: relative;
+		}
+
+		.progress-bar {
+			height: 100%;
+			background-color: #4CAF50;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		
+		/* Define the close button style */
+		.close {
+			color: white;
+			position: absolute;
+			top: 10px;
+			right: 25px;
+			font-size: 35px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		
+		.close:hover,
+		.close:focus {
+			color: #bbb;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+  </head>
+  <body>
+
+
+<section class="hero">
+  
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="title is-2 publication-title" style="width: 110%; margin-left: -5%">
+            <img src="images/Psy-insight_logo.png" alt="Logo" style="height: 50px; vertical-align: middle;">
+            Psy-Insight: <br> Explainable Multi-turn Bilingual Dataset for Mental Health Counseling</h2>
+          <div class="is-size-5">
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Anonymous Team <sup>*</sup><sup>&#x2660;</sup>
+            </span>, 
+            <!-- <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Xin Xu<sup>*</sup><sup>&#x2660;</sup>
+            </span>, 
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Ningyu Zhang<sup>&dagger;</sup><sup>&#x2660;</sup>
+            </span>, 
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Ruibo Liu<sup>&#x2663;</sup>
+            </span>
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Bryan Hooi<sup>&#x2661;</sup>
+            </span>
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Shumin Deng<sup>&dagger;</sup><sup>&#x2661;</sup>
+            </span> -->
+          </div>
+
+          <br>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <sup>&#x2660;</sup>Anonymous University
+            </span>
+            <!-- <span class="author-block">
+              <sup>&#x2661;</sup>National University of Singapore, NUS-NCS Joint Lab
+            </span>
+            <span class="author-block">
+              <sup>&#x2663;</sup>Google DeepMind
+            </span> -->
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal Contribution</span>
+            <span class="author-block"><sup>&dagger;</sup>Corresponding Author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <!-- code2024/Psy-Copilot/docs/psy-copilot/doc/Psy_Copilot__Visual_Chain_Of_Thought_for_Counseling.pdf -->
+                <a href="https://anonymous.4open.science/r/Psy-Copilot-6EA1/docs/paper/Psy_Copilot__Visual_Chain_Of_Thought_for_Counseling.pdf" 
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Huggingface Paper-->
+              <span class="link-block">
+                <a href="https://anonymous.4open.science/r/Psy-Copilot-6EA1/docs/data/Psy-COT-Graph.svg" 
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                    <img src="./static/images/KnowLM.png" alt="Drive" style="height: 19px; width: 21px; vertical-align: middle;"/>
+                  </span>
+                  <span>Psy-COT Graph</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://anonymous.4open.science/r/Psy-Copilot-6EA1/README.md" target="_blank" 
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Google Drive Link. -->
+
+              <span class="link-block">
+                <a href="https://anonymous.4open.science/r/Psy-Copilot-6EA1/docs/data/README.md" target="_blank" 
+                  class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <img src="./static/images/drive.png" alt="Drive" style="height: 17px; width: 17px; vertical-align: middle;"/>
+                  </span>
+                <span>Dataset</span>
+                </a>
+              </span>
+              <!--Twitter-->
+              <span class="link-block">
+                <a href="https://anonymous.4open.science/r/Psy-Copilot-6EA1/docs/data/" target="_blank" 
+                  class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <img src="./images/twitter.png" alt="Drive" style="height: 17px; width: 17px; vertical-align: middle;"/>
+                  </span>
+                <span>Demo</span>
+                </a>
+              </span>
+            </div>
+
+
+
+            <quotebody>
+              <div class="quote-container">
+                  <blockquote class="quote">"True collaboration is not about dividing work between machines and people but about bringing the strengths of both together to solve problems and achieve more than either could alone."</blockquote>
+                  <div class="author">—— Garry Kasparov</div>
+              </div>
+          </quotebody>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    
+    <div class="hero-body">
+      <img id="teaser" width="120%" src="./images/gif.gif">
+      <h2>
+        An example of the <b>chess move validity</b> task. Given previous chess game moves, agents are required to predict a valid next move for a specified piece.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!--摘要-->
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Large language models (LLMs) are becoming increasingly popular in the field of psychological counseling. However, when human therapists work with LLMs in therapy sessions, it is hard to understand how the model gives the answers. To address this, we have constructed <strong><i style="color: red;"></i>Psy-COT</i></strong>, a graph designed to visualize the thought processes of LLMs during therapy sessions.  The Psy-COT graph presents semi-structured counseling conversations alongside step-by-step annotations that capture the reasoning and insights of therapists. Moreover, we have developed <strong><i style="color: red;"></i>Psy-Copilot</i></strong>, which is a conversational AI assistant designed to assist human psychological therapists in their consultations. It can offer traceable psycho-information based on retrieval, including response candidates, similar dialogue sessions, related strategies, and visual traces of results. We have also built an interactive platform for AI-assisted counseling. It has an interface that displays the relevant parts of the retrieval sub-graph. The Psy-Copilot is designed not to replace psychotherapists, but to foster collaboration between AI and human therapists, thereby promoting mental health development. Our code and demo are both open-sourced and available for use.
+            <!-- As Natural Language Processing (NLP) systems are increasingly employed in intricate social environments, a pressing query emerges: <strong><i style="color: red;">Can these NLP systems mirror human-esque collaborative intelligence, in a multi-agent society consisting of multiple large language models (LLMs)?</i></strong> This paper probes the collaboration mechanisms among contemporary NLP systems by melding practical experiments with theoretical insights. 
+            We fabricate four unique 'societies' comprised of LLM agents, 
+            where each agent is characterized by a specific 'trait' ( 
+              <img src="images/easygoing.png" alt="Logo" style="height: 15px; width: 18px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; color: red; text-decoration: underline;">easy-going</span> or 
+              <img src="images/overconfident.png" alt="Logo" style="height: 16px; width: 21px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; color: blue; text-decoration: underline;">overconfident</span> ) and engages in collaboration with a distinct 'thinking pattern' 
+              (<img src="images/debate.png" alt="Logo" style="height: 15px; width: 15px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; text-decoration: underline;">debate</span> or 
+                <img src="images/reflection.png" alt="Logo" style="height: 16px; width: 16px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; text-decoration: underline;">reflection</span>). Through evaluating these multi-agent societies on three benchmark datasets, we discern that certain collaborative strategies not only outshine previous top-tier approaches, but also optimize efficiency (using fewer API tokens). Moreover, our results further illustrate that LLM agents manifest human-like social behaviors, such as conformity and consensus reaching, mirroring foundational social psychology theories. In conclusion, we integrate insights from social psychology to contextualize the collaboration of LLM agents, inspiring further investigations into the collaboration mechanism for LLMs.  -->
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <br>
+    <br>
+    <!-- Simulation Setup -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Overview <div class="triangle-down"></div></h2> <!-- onclick="toggleCollapse()"-->
+        
+        <!--轮播1-->
+        <div id="collapseContent" class="slider slider1">
+          <!-- 左右按钮 -->
+          <button class="prev" onclick="plusSlides(-1,'slider1')">&#10094;</button>
+          <button class="next" onclick="plusSlides(1,'slider1')">&#10095;</button>
+
+          <!-- 图片 -->
+          <div class="slides">
+              <div class="slide">
+                  <img src="./images/psy-copilot/Overview2.png" alt="First Slide">
+                  <br><br>
+                  <div><b>Figure 2: Overview of indexes in Psy-COT and retrieval progress in Psy-Copilot. Psy-COT has two vector indexes for dialog and COT reasoning content respectively. There is a two-stage retrieval argument generation in Psy-Copilot.</b></div>
+                  <br>
+                  <!-- <p align="left">这是左对齐的段落。</p> -->
+                  <br><br><br><br>
+              </div>
+              <!-- 轮播一图片2 -->
+              <div class="slide">
+                  <img src="./images/psy-copilot/screenshot.png" alt="Second Slide">
+                  <br><br>
+                  <p style="text-align: left; padding-bottom: 15px;">This figure presents a screenshot of Psy-Copilot.</p>
+                  <p style="text-align: left; padding-bottom: 15px;">Psy-Copilot is a helper tool that uses artificial intelligence to work alongside therapists in giving psychological support. It's made to make sure that people can trust and understand how AI works in this setting. Psy-Copilot acts like a chatbot (left side), offering clear and dependable information (right side) that therapists can follow, such as possible replies, past conversations, and strategies for counseling. </p>
+                  <p style="text-align: left; padding-bottom: 15px;">Psy-Copilot has a user-friendly page that shows how the AI comes up with its answers, making it easy to see the steps it takes. Since Psy-Copilot is open-source, it lets people work together and share ideas. It's made to create a good working relationship between AI, therapists, and those seeking help, with the goal of improving mental health.</p>
+                  <br>
+              </div>
+              <!-- 轮播一图3 -->
+
+              <!-- <div class="slide">
+                  <img src="./images/setting/setting_detail2.png" alt="Third Slide">
+                  <br><br><br>
+                  <p style="text-align: left; padding-bottom: 15px;">This figure illustrates the definition of society. A society is composed of multiple agents. In the main experiment, we define the number of agents as three. This is partly to facilitate decision-making (minority yields to majority) and partly to reduce diversity. We have set the number of collaboration rounds to three.</p>
+                  <p style="text-align: left; padding-bottom: 15px;">Due to the differing traits of agents, there exist various types of societies. Based on permutations and combinations, we can identify four distinct types of societies.</p>
+                  <p style="text-align: left; padding-bottom: 15px;">Given the diversity in agents' thinking patterns, each round of collaboration presents a unique set of combinations. We term the specific array of thinking patterns chosen by agents in any round as the 'collaborative strategy'. Our classification hinges on whether all agents in a round adopt identical thinking patterns. The focus of our main experiment is on those collaborative strategies where uniformity in thinking patterns is observed within a round, while other variations are examined in our ablation studies. Based on permutations and combinations, we identify a total of 2^3 distinct collaborative strategies in the main experiment.</p>
+                  <br><br><br><br>
+              </div> -->
+              <!-- 轮播1图片4(两段文本) -->
+              <div class="slide">
+                
+                <br><br>
+                <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Datasets</p>
+                <p align="left">The dataset for Psy-Copilot consists of 941 psycho-counseling sessions collected from psychological blogs. Each session contains dialogue and corresponding explanatory text. These sessions are used to construct the Psy-COT graph, which maps out event connections and strategic transitions in counseling dialogues.</p>
+                <br><br>
+                <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Evaluation Metric</p>
+                <p style="text-align: left; padding-bottom: 15px;">The evaluation metrics for Psy-Copilot focus on four aspects of multi-turn dialogues: Fluency (Flu.), Helpfulness (Hel.), Naturalness (Nat.), and Comforting Effectiveness (Com.). These metrics are used to assess the performance of Psy-Copilot against baseline models. The human evaluation scores are presented in a table, showing the performance of different models across the four metrics. Psy-Copilot outperforms the baseline models in all four metrics, indicating its effectiveness in generating psychological counseling responses.
+                </p>
+                <br><br><br><br>
+            </div>
+            <div class="slide">
+                  <img src="./images/psy-copilot/tmp3848.png" alt="Third Slide">
+                  <br><br><br>
+                  <p style="text-align: left; padding-bottom: 15px;">This figure illustrates the objective evaluation results of Psy-Copilot generated result. Psy-Copilot-Dialog scoring 8.5 for Fluency, 7.4 for Helpfulness, 7.2 for Naturalness, and 8.2 for Comforting Effectiveness. The Psy-Copilot-COT variant showed even higher scores, achieving 8.6 for Fluency and 7.5 for Helpfulness, with a slight drop to 7.0 for Naturalness but a higher 7.9 for Comforting Effectiveness. These results indicate that Psy-Copilot not only meets but exceeds the performance of existing models, showcasing its potential to enhance the synergy between AI and human therapists in providing psychological support.
+                  <br><br><br><br>
+              </div>
+          </div>
+
+          <!-- 按钮 -->
+          <div class="slider-btns">
+              <button class="slider-btn active" onclick="currentSlide(1,'slider1')">Overview</button>
+              <button class="slider-btn" onclick="currentSlide(2,'slider1')">Screenshot</button>
+              <!-- <button class="slider-btn" onclick="currentSlide(3,'slider1')">Society</button> -->
+              <button class="slider-btn" onclick="currentSlide(4,'slider1')">Dataset & Metric</button>
+              <button class="slider-btn" onclick="currentSlide(4,'slider1')">Objective Evaluation</button>
+          </div>
+        </div>
+        <!--/轮播1-->
+
+        
+        <p style="text-align: left; padding-top: 10px;">
+          The above displays the overview and detailed setting of the Psy-copilot, as well as the dataset and evaluation metrics. You can click the buttons above to view the respective contents.
+        </p>
+        <br>
+        
+        
+      </div>
+    </div>
+    <!-- /Simulation Setup -->
+    <br>
+    <br>
+    <!-- Main Results -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Psy-COT Graph <div class="triangle-down"></div></h2>
+        <!--轮播图-->
+        <section class="section">
+          <div class="container is-max-desktop content">
+              <div class="slider slider2">
+                  <!-- 左右按钮 -->
+                  <button class="prev" onclick="plusSlides(-1,'slider2')">&#10094;</button>
+                  <button class="next" onclick="plusSlides(1,'slider2')">&#10095;</button>
+                  <!-- 图片 -->
+                  <div class="slides">
+                      <div class="slide">
+                          <img src="./images/psy-copilot/KG-example.png" alt="First Slide">
+                          <br><br>
+                          <p style="text-align: left; padding-bottom: 15px;">A small sub-graph of Psy-COT graph. The Psy-COT maps events and strategies to dialogue units, preserving causal and temporal relationships.</p>
+                          <br><br>
+                      </div>
+                      <div class="slide">
+                        <img src="./images/psy-copilot/graph.png" alt="First Slide">
+                        <br><br>
+                        <p style="text-align: left; padding-bottom: 15px;">A small sub-graph of Psy-COT graph in Neo4j. Our graph and dataset are open-sourced on Github. You can try and interact with Psy-COT by buttons on homepage.</p>
+                        <br><br>
+                    </div>
+                      <div class="slide">
+                          <img src="./images/psy-copilot/previous.png" alt="Second Slide">
+                          <br><br>
+                          <p style="text-align: left; padding-bottom: 15px;">Previous Works on Knowledge Graph (KG).</p>
+                          <p style="text-align: left; padding-bottom: 15px;">Psy-COT has similarities to commonsense graphs and knowledge graphs. Figure 1 and2 shows how Psy-COT differs from previous studies. Unlike knowledge graphs, which focus on entities, Psy-COT emphasizes counseling descriptions and logic relationship ("Disappointed" vs Expand Client’s Client’s relationship). </p>
+                          <br><br>
+                      </div>
+                      <div class="slide">
+                        <br><br>
+                        <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Multi-Level Indexing for Retrieval</p>
+                        <p align="left">Psy-COT features the construction of two specialized indexing structures, one for COT (Chain of Thought) nodes and another for dialogue nodes. This design allows for more precise information retrieval, enhancing the efficiency and accuracy of finding relevant strategies and dialogues in psychological counseling conversations. By distinguishing between the content of the chain of thought and dialogue content, Psy-COT enables more accurate vector retrieval, thereby boosting the performance of LLMs.</p>
+                        <br><br>
+                        <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Visualizing the Thought Process</p>
+                        <p align="left">Psy-COT presents a graphical representation of the thought process in psychological counseling dialogues, allowing therapists to intuitively understand the reasoning behind AI models. It displays semi-structured counseling conversations alongside step-by-step annotations that capture the reasoning and insights of therapists, enhancing the transparency of AI decision-making. Unlike traditional knowledge graphs, Psy-COT emphasizes the logical chain of causality in events and the temporal evolution of strategies in counseling, rather than just the inclusion relationships between entities.</p>
+                        <br><br>
+
+                    
+                      </div>
+                      
+                      <!-- 
+                      <div class="slide">
+                        <img src="./images/main_result/llama70.png" alt="Third Slide">
+                      </div>
+                      <div class="slide">
+                        <img src="./images/main_result/qwen.png" alt="Third Slide">
+                      </div>
+                      <div class="slide">
+                        <img src="./images/main_result/mixtral.png" alt="Third Slide">
+                      </div> -->
+                  </div>
+
+                  <!-- 按钮 -->
+                  <div class="slider-btns">
+                      <button class="slider-btn active" onclick="currentSlide(1,'slider2')">Example of Psy-COT graph</button>
+                      <button class="slider-btn active" onclick="currentSlide(1,'slider2')">Example of Psy-COT graph (Neo4j)</button>
+                      <button class="slider-btn" onclick="currentSlide(2,'slider2')">Example of previous KG</button>
+                      <button class="slider-btn" onclick="currentSlide(3,'slider2')">Contribution of Psy-COT</button>
+                      <!-- <button class="slider-btn" onclick="currentSlide(3,'slider2')">LlaMA-2 13B Chat</button>
+                      <br><br>
+                      <button class="slider-btn" onclick="currentSlide(4,'slider2')">LlaMA-2 70B Chat</button>
+                      <button class="slider-btn" onclick="currentSlide(5,'slider2')">Qwen 72B</button>
+                      <button class="slider-btn" onclick="currentSlide(6,'slider2')">Mixtral-8x7B</button> -->
+                  </div>
+              </div>
+          </div>
+        </section>
+        <br>   
+      </div>
+    </div>
+    <br>
+    <br>
+    <!-- /Main Results -->
+
+    <!-- Conformity -->
+    
+    <!-- /Conformity -->
+
+    <!-- Consensus -->
+    
+    <!-- /Consensus -->
+
+    <!-- Take away-->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Take away <div class="triangle-down"></div></h2>
+        <!--轮播图-->
+        <section class="section">
+          <div class="container is-max-desktop content">
+              <div class="slider slider5">
+                  <!-- 左右按钮 -->
+                  <button class="prev" onclick="plusSlides(-1,'slider5')">&#10094;</button>
+                  <button class="next" onclick="plusSlides(1,'slider5')">&#10095;</button>
+                  <!-- 图片 -->
+                  <div class="slides">
+                      <div class="slide">
+                        <ul style="padding-left: 40px; list-style-type: none; text-align: left; padding-right: 60px;">
+                          <br><br>
+                          <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Open open-sourced Interactive Platform</p>
+                          <p align="left">Combined with Psy-Copilot, Psy-COT has built an interactive platform that offers a user-friendly interface for therapists to engage with the AI system. During each dialogue round, the platform dynamically retrieves and displays relevant sub-graphs, making it easier for therapists to understand the logic chain behind AI-generated responses. This interactive experience not only strengthens therapists' trust in the AI system but also fosters collaboration between AI and human therapists, advancing mental health development.</p>
+                          <br><br>
+                        </ul>
+                      </div>
+                      <div class="slide">
+                        <ul style="padding-left: 40px; list-style-type: none; padding-right: 60px;text-align: left;">
+                          
+                          <br><br>
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. The effectiveness of Psy-Copilot's two-stage retrieval argument generation process is evident in the high scores, suggesting that the combination of dialogue and reasoning content retrieval is a robust approach for generating counseling responses.</span></li>
+                          <!-- The open-sourcing of Psy-Copilot's code and demo can accelerate research and development in AI-assisted therapy, allowing for broader collaboration and innovation within the field. -->
+
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. The Psy-Copilot's can allow for broader AI-Therapist collaboration in the field of emotional support conversation.</span></li>
+                          <br><br>
+                        </ul>
+                        <br><br><br>
+                      </div>
+                      <!-- <div class="slide">
+                        <ul style="padding-left: 40px; padding-right: 60px;list-style-type: none; text-align: left;">
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. Collaboration is generally effective in the group, especially for tackling difficult tasks.</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. Collaboration widely leads to conformity, either beneficial or harmful in performance.</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">3. As the number of rounds increases, benefits of conformity will decrease; and detriments of conformity will increase.
+                          </span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">4. The totally easy-going society is more likely to reach a consensus, debate helps to consensus reaching while reflection impedes it.
+                          </span></li>
+                        </ul>
+                      </div> -->
+                      
+                  </div>
+
+                  <!-- 按钮 -->
+                  <div class="slider-btns">
+                      <button class="slider-btn active" onclick="currentSlide(1,'slider5')">Agent for cooperation</button>
+                      <button class="slider-btn" onclick="currentSlide(2,'slider5')">COT graph</button>
+                      <!-- <button class="slider-btn" onclick="currentSlide(3,'slider5')">Social Psychology View</button> -->
+                  </div>
+              </div>
+          </div>
+        </section>
+
+        <br>
+      </div>
+    </div>
+    <!-- /Take away-->
+  </div>
+</section>
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @article{Psy-Insight,
+        author       = {Anomyous until 2023-11-15},
+        title        = {Psy-Copilot: Visual Chain Of Thought for Counseling},
+        journal      = {AAAI},
+        volume       = {},
+        year         = {2024},
+        url          = {},
+        doi          = {}
+      }      
+</code></pre>
+  </div>
+</section>
+
+<section class="section" id="Acknowledgement">
+  <div class="container is-max-desktop content">
+    <p>
+      This website is adapted from <a
+      href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license"
+                                          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+      Commons Attribution-ShareAlike 4.0 International License</a>.
+    </p>
+  </div>
+</section>
+
+
+<script>
+
+
+
+// 创建两个独立的索引，分别用于两个轮播图
+// 创建一个对象来存储每个轮播图的状态
+var sliders = {
+    slider1: { index: 1 },
+    slider2: { index: 1 },
+    slider3: { index: 1 },
+    slider4: { index: 1 },
+    slider5: { index: 1 },
+    slider6: { index: 1 },
+    slider7: { index: 1 },
+    slider8: { index: 1 },
+};
+
+// 初始化轮播图
+showSlides(sliders.slider1.index, 'slider1');
+showSlides(sliders.slider2.index, 'slider2');
+showSlides(sliders.slider3.index, 'slider3');
+showSlides(sliders.slider4.index, 'slider4');
+showSlides(sliders.slider5.index, 'slider5');
+showSlides(sliders.slider6.index, 'slider6');
+showSlides(sliders.slider7.index, 'slider7');
+showSlides(sliders.slider8.index, 'slider8');
+
+function plusSlides(n, sliderClass) {
+    var slider = sliders[sliderClass];
+    var slides = document.querySelectorAll(`.${sliderClass} .slide`);
+    var dots = document.querySelectorAll(`.${sliderClass} .slider-btn`);
+    var slidesWrapper = document.querySelector(`.${sliderClass} .slides`);
+    var slideWidth = slides[0].clientWidth;
+
+    slider.index += n;
+    if (slider.index > slides.length) { slider.index = 1 }
+    if (slider.index < 1) { slider.index = slides.length }
+    var slideMove = -(slider.index - 1) * slideWidth;
+
+    updateSlider(slidesWrapper, dots, slideMove, slider.index);
+}
+
+function currentSlide(n, sliderClass) {
+    var slider = sliders[sliderClass];
+    var slides = document.querySelectorAll(`.${sliderClass} .slide`);
+    var dots = document.querySelectorAll(`.${sliderClass} .slider-btn`);
+    var slidesWrapper = document.querySelector(`.${sliderClass} .slides`);
+    var slideWidth = slides[0].clientWidth;
+    var slideMove = -(n - 1) * slideWidth;
+
+    slider.index = n;
+    updateSlider(slidesWrapper, dots, slideMove, slider.index);
+}
+
+function updateSlider(slidesWrapper, dots, slideMove, slideIndex) {
+    for (var i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slidesWrapper.style.transform = 'translateX(' + slideMove + 'px)';
+    dots[slideIndex - 1].className += " active";
+}
+
+function toggleCollapse() {
+    var content = document.getElementById("collapseContent");
+    if (content) {
+        content.classList.toggle("collapsed");
+    }
+}
+
+        // var slideIndex = 1;
+        // showSlides(slideIndex);
+
+        // function plusSlides(n) {
+        //     var slides = document.getElementsByClassName("slide");
+        //     slideIndex += n;
+        //     if (slideIndex > slides.length) {slideIndex = 1}
+        //     if (slideIndex < 1) {slideIndex = slides.length}
+        //     showSlides(slideIndex);
+        // }
+
+        // function currentSlide(n) {
+        //     showSlides(slideIndex = n);
+        // }
+
+        
+
+        // function showSlides(n) {
+        //     var slides = document.getElementsByClassName("slide");
+        //     var dots = document.getElementsByClassName("slider-btn");
+        //     var slidesWrapper = document.querySelector('.slides');
+
+        //     // 计算滑动的位置
+        //     var slideWidth = slides[0].clientWidth; // 获取单个幻灯片的宽度
+        //     var slideMove = -(n - 1) * slideWidth; // 计算应该滑动的距离
+
+        //     for (var i = 0; i < slides.length; i++) {
+        //         dots[i].className = dots[i].className.replace(" active", "");
+        //     }
+
+        //     // 使用 transform 属性来平滑地滑动幻灯片
+        //     slidesWrapper.style.transform = 'translateX(' + slideMove + 'px)';
+            
+        //     // 更新圆点按钮状态
+        //     dots[n-1].className += " active";
+        // }
+
+
+
+  // Get the modal element
+  // var modal = document.getElementById("myModal");
+  var overlay = document.getElementById("overlay");
+  var span = document.getElementsByClassName("close")[0];
+
+
+  // Get the image element and the close button element
+  //  // display the GIF as it is
+  // var img = document.getElementById("modalImg");
+  // var img = document.getElementById("overlayImg");
+  // Add event listeners to each GIF element
+  var gifs = document.getElementsByClassName("mygif");
+  for (var i = 0; i < gifs.length; i++) {
+  gifs[i].addEventListener("click", function() {
+      //  // display the GIF as it is
+      // // Set the modal image source and display the modal
+      // img.src = this.src;
+
+      // display the GIF as a new image, will play from the begining
+      var img = document.createElement("img");
+      img.src = this.src.replace(".png", ".gif");
+
+      // Add the img element to the overlay content and display the overlay
+      document.getElementById("overlayContent").appendChild(img);
+      
+
+      // modal.style.display = "block";
+      overlay.style.display = "block";
+
+      // Hide the body overflow
+              document.body.style.overflow = "hidden";
+  });
+  }
+
+  // Add event listener to close button
+  span.addEventListener("click", function() {
+  // Remove the img element from the overlay content, hide the overlay, and restore the body overflow
+          document.getElementById("overlayContent").innerHTML = "";
+
+  // Hide the modal
+  // modal.style.display = "none";
+  overlay.style.display = "none";
+  document.body.style.overflow = "auto";
+  });
+
+
+
+</script>
+</body>
+</html>
