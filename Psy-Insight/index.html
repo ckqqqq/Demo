@@ -408,7 +408,7 @@
                             <!-- <img src="./static/images/evaluation.png" alt="Evaluation" style="height: 19px; width: 21px; vertical-align: middle;"/> -->
                             📝
                         </span>
-                        <span>Evaluation Guide</span>
+                        <span>Evaluation Details</span>
                     </a>
                 </span>
                 <!-- Paper Link. -->
@@ -530,6 +530,26 @@
   </div>
 </section>
 
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    
+    <div class="hero-body">
+      <div class="hero-body">
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;"> How do we evaluate data? <div class="triangle-down"></div></h2> <!-- onclick="toggleCollapse()"-->
+        <h2>
+          <div class="content has-text-justified">
+            <p>
+              Our evaluators are eleven psychology students and two psychological counselors. They were asked to score 1-5 in interactivity, helpfulness, comfort, and explanability. We also calculated Cronbach's alpha to measure the reliability of human evaluation. This website [https://anonymous.4open.science/w/Demo-A32D/Psy-Insight/] open-sources the evaluation guides, metrics, score range, reliability analysis, and all the expert comparison results (scores & comments). 
+      
+            </p>
+          </div>
+          
+          <!-- We designed a RAG experiment to explore the effect of retrieval. In this experiment, we use chat history as input to retrieve similar dialogue cases from the dataset. Then, the model will concatenate the retrieved information and chat history to generate the response. -->
+        </h2>
+    </div>
+  </div>
+</section>
+
 <!--摘要-->
 <section class="section">
 
@@ -636,25 +656,34 @@
                   <button class="next" onclick="plusSlides(1,'slider5')">&#10095;</button>
                   <!-- 图片 -->
                   <div class="slides">
-                      <div class="slide">
-                        <ul style="padding-left: 40px; list-style-type: none; text-align: left; padding-right: 60px;">
-                          <br><br>
-                          <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Open open-sourced Interactive Platform</p>
-                          <p align="left">Combined with Psy-Copilot, Psy-COT has built an interactive platform that offers a user-friendly interface for therapists to engage with the AI system. During each dialogue round, the platform dynamically retrieves and displays relevant sub-graphs, making it easier for therapists to understand the logic chain behind AI-generated responses. This interactive experience not only strengthens therapists' trust in the AI system but also fosters collaboration between AI and human therapists, advancing mental health development.</p>
-                          <br><br>
-                        </ul>
-                      </div>
+
                       <div class="slide">
                         <ul style="padding-left: 40px; list-style-type: none; padding-right: 60px;text-align: left;">
                           
                           <br><br>
-                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. The effectiveness of Psy-Copilot's two-stage retrieval argument generation process is evident in the high scores, suggesting that the combination of dialogue and reasoning content retrieval is a robust approach for generating counseling responses.</span></li>
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. Most previous emotional supported datasets were collected based on English web posts. Multi-turn mental support dialogues, especially those in Chinese, are particularly lacking in data.</span></li>
                           <!-- The open-sourcing of Psy-Copilot's code and demo can accelerate research and development in AI-assisted therapy, allowing for broader collaboration and innovation within the field. -->
 
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. The Psy-Copilot's can allow for broader AI-Therapist collaboration in the field of emotional support conversation.</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. The Psy-Insight is a muliti-turn and long context dataset, with labels for emotions \ strategy \ psychotherapy\ summary \ expression \ step-by-step reasoning. </span></li>
+
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">3. Our experiments show that brief reasoning before generating response improves performance in mental support, but excessie reasoning reduces response quality. </span></li>
+
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">4. We invite 11 psychological students and 2 expert counselors to compare human counseling and GPT-synthetic responses. Their scores and comments are valuable for further research in mental support, eg,. DPO,RLHF. </span></li>
                           <br><br>
                         </ul>
                         <br><br><br>
+                      </div>
+                      <div class="slide">
+                        <ul style="padding-left: 40px; list-style-type: none; text-align: left; padding-right: 60px;">
+                          <br><br>
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. Data.</span></li>
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">2. Paper.</span></li>
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">3. Copyright\ Data Source.</span></li>
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">4. Evaluation.</span></li>
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">5. Data Example.</span></li>
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">6. Other.</span></li>
+                          <br><br>
+                        </ul>
                       </div>
                       <!-- <div class="slide">
                         <ul style="padding-left: 40px; padding-right: 60px;list-style-type: none; text-align: left;">
@@ -671,8 +700,8 @@
 
                   <!-- 按钮 -->
                   <div class="slider-btns">
-                      <button class="slider-btn active" onclick="currentSlide(1,'slider5')">Agent for cooperation</button>
-                      <button class="slider-btn" onclick="currentSlide(2,'slider5')">COT graph</button>
+                      <button class="slider-btn active" onclick="currentSlide(1,'slider5')">Insights</button>
+                      <button class="slider-btn" onclick="currentSlide(2,'slider5')">Resources</button>
                       <!-- <button class="slider-btn" onclick="currentSlide(3,'slider5')">Social Psychology View</button> -->
                   </div>
               </div>
