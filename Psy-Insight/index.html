@@ -493,7 +493,7 @@
     <div class="hero-body">
       <img id="teaser" width="120%" src="./images/psy-insight/tmp495F.png">
       <h2>
-        The workflow of data construction.  
+        The workflow of data construction. We clean psychologial data from other raw pretained datasets (eg,. <a href="http://mnbvc.253874.net/">MNBVC</a>, PsyArxiv). The Copyright and datasource information of raw datasets are <a href="https://anonymous.4open.science/r/Psy-Insight-F65E/docs/data_source/data_source.md">archived</a>, with detailed licenses provided. We used keywords provided by psychological experts filter out professional-level psychological counseling dialogues and explanations. Then we mapped these explanations to dialogs' labels. Finally, two students manually checked the data and remove irrelevant dialogues.
       </h2>
     </div>
   </div>
@@ -548,8 +548,46 @@
         <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;"> How do we evaluate data? <div class="triangle-down"></div></h2> <!-- onclick="toggleCollapse()"-->
         <h2>
           <div class="content has-text-justified">
+            <span class="link-block">
+              <a href="https://anonymous.4open.science/r/Psy-Insight-F65E/expert-eval/README.md" 
+                 class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <!-- <img src="./static/images/evaluation.png" alt="Evaluation" style="height: 19px; width: 21px; vertical-align: middle;"/> -->
+                      📝
+                  </span>
+                  <span>Evaluation Details</span>
+              </a>
+          </span>
             <p>
-              Our evaluators are eleven psychology students and two psychological counselors. They were asked to score 1-5 in interactivity, helpfulness, comfort, and explanability. We also calculated Cronbach's alpha to measure the reliability of human evaluation. This website [https://anonymous.4open.science/w/Demo-A32D/Psy-Insight/] open-sources the evaluation guides, metrics, score range, reliability analysis, and all the expert comparison results (scores & comments). 
+              Our evaluators are eleven psychology students and two psychological counselors. They were asked to score 1-5 in interactivity, helpfulness, comfort, and explanability. We also calculated Cronbach's alpha to measure the reliability of human evaluation. This website [https://anonymous.4open.science/r/Psy-Insight-F65E/expert-eval/README.md] open-sources the evaluation guides, metrics, score range, reliability analysis, and all the expert comparison results (scores & comments).
+            </p>
+          </div>
+          
+          <!-- We designed a RAG experiment to explore the effect of retrieval. In this experiment, we use chat history as input to retrieve similar dialogue cases from the dataset. Then, the model will concatenate the retrieved information and chat history to generate the response. -->
+        </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    
+    <div class="hero-body">
+      <div class="hero-body">
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;"> Where can I obtain dataset statistics and data examples? <div class="triangle-down"></div></h2> <!-- onclick="toggleCollapse()"-->
+        <h2>
+          <div class="content has-text-justified">
+            <span class="link-block">
+              <a href="https://anonymous.4open.science/r/Psy-Insight-F65E" 
+                 class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Github</span>
+              </a>
+          </span>
+            <p>
+              Our github repository [https://anonymous.4open.science/r/Psy-Insight-F65E] open-sources the dataset statistics, data examples, and all the code to generate the dataset.
       
             </p>
           </div>
@@ -559,6 +597,7 @@
     </div>
   </div>
 </section>
+
 
 <!--摘要-->
 <section class="section">
