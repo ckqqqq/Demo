@@ -551,22 +551,34 @@
                    <!-- <p align="left">left_align。</p> -->
                   <br><br><br><br>
               </div>
-              <!-- <div class="slide">
-                  <img src="./images/setting/setting_detail1.png" alt="Second Slide">
-                  <br><br>
-                  <p style="text-align: left; padding-bottom: 15px;">This figure presents the definition of an individual agent.</p>
-                  <p style="text-align: left; padding-bottom: 15px;">First, we define the traits of an agent, where we have designed two fundamental and contrasting personalities: easygoing and overconfident. The advantage of an overconfident personality is the ability to concentrate resources on significant tasks without wasting time in communication. This trait is often seen in startups where a single shareholder holds a majority stake. On the other hand, the advantage of an easygoing personality is the recognition and correction of one's mistakes. To make this concept more vivid, we represent agents with 'puzzles'. An agent without any missing pieces symbolizes overconfidence, as they tend to be impermeable to external influences. In contrast, agents with missing pieces represent the easygoing nature, indicating openness to others' opinions and fostering better collaboration.</p>
-                  <p style="text-align: left; padding-bottom: 15px;">We then define the thinking patterns of an agent during problem-solving. We have conceptualized two primary methods: debate and reflection. In simple terms, the debate thinking pattern involves acquiring opinions from others, akin to a debate competition. In contrast, the reflection pattern relies solely on oneself, similar to how individuals are isolated from others' answers during an exam. In our paper, 'p<sub>0</sub>' denotes debate, while 'p<sub>1</sub>' represents reflection. For mnemonic purposes, the number '0' resembles an open mouth, symbolizing the need to engage in debate, and the number '1' resembles a closed mouth, indicative of self-reflection.</p>
+              <div class="slide">
+                  <img src="./images/demo_gif/main_final.png" alt="Second Slide">
                   <br>
-              </div> -->
-              <!-- <div class="slide">
-                  <img src="./images/setting/setting_detail2.png" alt="Third Slide">
-                  <br><br><br>
-                  <p style="text-align: left; padding-bottom: 15px;">This figure illustrates the definition of society. A society is composed of multiple agents. In the main experiment, we define the number of agents as three. This is partly to facilitate decision-making (minority yields to majority) and partly to reduce diversity. We have set the number of collaboration rounds to three.</p>
-                  <p style="text-align: left; padding-bottom: 15px;">Due to the differing traits of agents, there exist various types of societies. Based on permutations and combinations, we can identify four distinct types of societies.</p>
-                  <p style="text-align: left; padding-bottom: 15px;">Given the diversity in agents' thinking patterns, each round of collaboration presents a unique set of combinations. We term the specific array of thinking patterns chosen by agents in any round as the 'collaborative strategy'. Our classification hinges on whether all agents in a round adopt identical thinking patterns. The focus of our main experiment is on those collaborative strategies where uniformity in thinking patterns is observed within a round, while other variations are examined in our ablation studies. Based on permutations and combinations, we identify a total of 2^3 distinct collaborative strategies in the main experiment.</p>
-                  <br><br><br><br>
-              </div> -->
+                  <p style="text-align: left; padding-bottom: 15px;">An overview of the NeuroSteer architecture. Data interaction between GPT and SAE occurs in three steps:
+                  </p>
+                  <p style="text-align: left; padding-bottom: 15px;">
+                  "Training"：The domain adaptation data input is a series of sentences containing positive sentiment😄 and sentences containing negative sentiment🤬. They are green "Pos" and red "Neg" on this figure  
+                 </p>
+                  <p style="text-align: left; padding-bottom: 15px;">Step 1: The GPT collects neuron activation frequencies of positive and negative samples. This step show how we can filter the neurons for positive emotion😄. <strong>Neurons that are frequently activated in positive samples😄 but not in negative ones🤬 are key to positive behaviors</strong></p>
+                  <p style="text-align: left; padding-bottom: 15px;">Step 2: The SAE extracts positive emotion neurons😄 and denoises
+                    based on frequency differences.<strong>Neurons frequently activated in positive and negative samples represent noise and are not activated for steering.</strong></p>
+                  <p style="text-align: left; padding-bottom: 15px;">Step 3: The SAE activates positive emotion neuron combinations 😄 and decodes their effects into GPT hidden space.</p>
+                  <br>
+              </div>
+              <div class="slide">
+                  <img src="./images/demo_gif/method_2.gif" alt="Third Slide">
+                  <br>
+                  <p style="text-align: left; padding-bottom: 15px;">An overview of the NeuroSteer architecture. Data interaction between GPT and SAE occurs in three steps:
+                  </p>
+                  <p style="text-align: left; padding-bottom: 15px;">
+                  "Training"：The domain adaptation data input is a series of sentences containing positive sentiment😄 and sentences containing negative sentiment🤬. They are green "Pos" and red "Neg" on this figure  
+                 </p>
+                  <p style="text-align: left; padding-bottom: 15px;">Step 1: The GPT collects neuron activation frequencies of positive and negative samples. This step show how we can filter the neurons for positive emotion😄. <strong>Neurons that are frequently activated in positive samples😄 but not in negative ones🤬 are key to positive behaviors</strong></p>
+                  <p style="text-align: left; padding-bottom: 15px;">Step 2: The SAE extracts positive emotion neurons😄 and denoises
+                    based on frequency differences.<strong>Neurons frequently activated in positive and negative samples represent noise and are not activated for steering.</strong></p>
+                  <p style="text-align: left; padding-bottom: 15px;">Step 3: The SAE activates positive emotion neuron combinations 😄 and decodes their effects into GPT hidden space..</p>
+                  
+              </div>
               <!-- <div class="slide">
                 
                 <br><br>
@@ -607,9 +619,9 @@
           <!-- 按钮 -->
           <div class="slider-btns">
               <button class="slider-btn active" onclick="currentSlide(1,'slider1')">Overview</button>
-              <!-- <button class="slider-btn" onclick="currentSlide(2,'slider1')">Single Agent</button>
-              <button class="slider-btn" onclick="currentSlide(3,'slider1')">Society</button>
-              <button class="slider-btn" onclick="currentSlide(4,'slider1')">Dataset & Metric</button> -->
+              <button class="slider-btn" onclick="currentSlide(2,'slider1')">How can we filter positive neurons?</button>
+              <button class="slider-btn" onclick="currentSlide(3,'slider1')">Step by Step</button>
+              <!-- <button class="slider-btn" onclick="currentSlide(4,'slider1')">Dataset & Metric</button> -->
           </div>
         </div>
         <!--/轮播1-->
