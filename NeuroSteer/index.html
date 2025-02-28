@@ -472,7 +472,7 @@
       <img id="teaser" width="120%" src="./images/demo_gif/main.gif">
       <!-- NeuroSteer\images\demo_gif\main.gif -->
       <h2>
-        NeuroSteer can regulate the behavior of LM. On the left is the original GPT output, and on the right are the output after being regulated by NeuroSteer. Adjust the emotional tendency (happy😄 /angry🤬) of GPT through the slider.
+        NeuroSteer can regulate the behavior of LM. On the left is the original GPT output, and on the right are the output after being regulated by NeuroSteer. Adjust the emotional tendency (happy😄 /angry🤬) of GPT through the slider. This demo will be deloyed soon. 🎉
         <!-- "😄|🎉|✨"},
     {"label": "咒骂", "symbol": "🤬|💢|🗯️"}, -->
       </h2>
@@ -530,7 +530,7 @@
     <!--/ Abstract. -->
     <br>
     <br>
-    <!-- Simulation Setup -->
+    <!-- Method -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-six-fifths">
         <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Method <div class="triangle-down"></div></h2> <!-- onclick="toggleCollapse()"-->
@@ -542,32 +542,32 @@
           <button class="next" onclick="plusSlides(1,'slider1')">&#10095;</button>
 
           <!-- 图片 -->
-          <!-- <div class="slides">
+          <div class="slides">
               <div class="slide">
-                  <img src="./images/setting/setting_overview.png" alt="First Slide">
+                  <img src="./images/demo_gif/method1.gif" alt="First Slide">
                   <br><br>
-                  <div><b>Figure 2: The overview of machine society simulation. Multiple agents with different traits make up diverse machine societies. These agents engage in debate or self-reflection across multiple rounds to complete tasks.</b></div>
+                  <div><b>Figure 2: The overview of steering process. During LM inference, the target neurons of the SAE are activated. The SAE decoded output is then added to the GPT hidden state via a residual connection, and the intervention (steer) strength is controlled by alpha, influencing the LM behavior.</b></div>
                   <br>
                    <p align="left">这是左对齐的段落。</p>
                   <br><br><br><br>
               </div>
-              <div class="slide">
+              <!-- <div class="slide">
                   <img src="./images/setting/setting_detail1.png" alt="Second Slide">
                   <br><br>
                   <p style="text-align: left; padding-bottom: 15px;">This figure presents the definition of an individual agent.</p>
                   <p style="text-align: left; padding-bottom: 15px;">First, we define the traits of an agent, where we have designed two fundamental and contrasting personalities: easygoing and overconfident. The advantage of an overconfident personality is the ability to concentrate resources on significant tasks without wasting time in communication. This trait is often seen in startups where a single shareholder holds a majority stake. On the other hand, the advantage of an easygoing personality is the recognition and correction of one's mistakes. To make this concept more vivid, we represent agents with 'puzzles'. An agent without any missing pieces symbolizes overconfidence, as they tend to be impermeable to external influences. In contrast, agents with missing pieces represent the easygoing nature, indicating openness to others' opinions and fostering better collaboration.</p>
                   <p style="text-align: left; padding-bottom: 15px;">We then define the thinking patterns of an agent during problem-solving. We have conceptualized two primary methods: debate and reflection. In simple terms, the debate thinking pattern involves acquiring opinions from others, akin to a debate competition. In contrast, the reflection pattern relies solely on oneself, similar to how individuals are isolated from others' answers during an exam. In our paper, 'p<sub>0</sub>' denotes debate, while 'p<sub>1</sub>' represents reflection. For mnemonic purposes, the number '0' resembles an open mouth, symbolizing the need to engage in debate, and the number '1' resembles a closed mouth, indicative of self-reflection.</p>
                   <br>
-              </div>
-              <div class="slide">
+              </div> -->
+              <!-- <div class="slide">
                   <img src="./images/setting/setting_detail2.png" alt="Third Slide">
                   <br><br><br>
                   <p style="text-align: left; padding-bottom: 15px;">This figure illustrates the definition of society. A society is composed of multiple agents. In the main experiment, we define the number of agents as three. This is partly to facilitate decision-making (minority yields to majority) and partly to reduce diversity. We have set the number of collaboration rounds to three.</p>
                   <p style="text-align: left; padding-bottom: 15px;">Due to the differing traits of agents, there exist various types of societies. Based on permutations and combinations, we can identify four distinct types of societies.</p>
                   <p style="text-align: left; padding-bottom: 15px;">Given the diversity in agents' thinking patterns, each round of collaboration presents a unique set of combinations. We term the specific array of thinking patterns chosen by agents in any round as the 'collaborative strategy'. Our classification hinges on whether all agents in a round adopt identical thinking patterns. The focus of our main experiment is on those collaborative strategies where uniformity in thinking patterns is observed within a round, while other variations are examined in our ablation studies. Based on permutations and combinations, we identify a total of 2^3 distinct collaborative strategies in the main experiment.</p>
                   <br><br><br><br>
-              </div>
-              <div class="slide">
+              </div> -->
+              <!-- <div class="slide">
                 
                 <br><br>
                 <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Datasets</p>
@@ -600,8 +600,8 @@
                   
                 </p>
                 <br><br><br><br>
-            </div>
-          </div> -->
+            </div> -->
+          </div>
           <!-- 图片 -->
 
           <!-- 按钮 -->
@@ -757,7 +757,7 @@
     <!-- Consensus -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-six-fifths">
-        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Consensus <div class="triangle-down"></div></h2>
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Open Source for demo and code<div class="triangle-down"></div></h2>
         <!--轮播图-->
         <section class="section">
           <div class="container is-max-desktop content">
