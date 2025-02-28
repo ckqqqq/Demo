@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script>
+<script src='https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js'></script>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Exploring Collaboration Mechanisms for LLM Agents: A Social Psychology View">
+  <meta name="keywords" content="Multi-agent, Social Psychology, Collaboration">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exploring Collaboration Mechanisms for LLM Agents: A Social Psychology View</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="icon" href="./static/images/logo.png">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+
+  quotebody {
+        font-family: 'Times New Roman', serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        margin: 0;
+        background-color: #fff;
+        color: #333;
+        text-align: left; /* Centering text */
+    }
+
+    .quote-container {
+        max-width: 600px;
+        padding: 20px;
+    }
+
+    .quote {
+        font-size: 20px;
+        font-style: italic;
+        margin: 0;
+    }
+
+    .author {
+        font-size: 16px;
+        margin-top: 20px; /* Space between quote and author */
+        text-align: right;
+    }
+
+    /*上面是名言*/
+
+    .triangle-down {
+        width: 0;
+        height: 0;
+        display: inline-block;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 20px solid black; /* Adjust the color as needed */
+        margin-left: 5px; /* Optional, for spacing */
+        vertical-align: middle;
+    }
+    .collapsed {
+      display: none;
+      transition: height 0.3s ease-out;
+    }
+/* 轮播图样式 */
+/* 轮播图样式 */
+      .slider {
+            width: 100%;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            transition: 0.6s ease-in-out;
+        }
+
+        .slider-btns {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex; /* 使用Flexbox布局 */
+    justify-content: center; /* 水平居中所有按钮 */
+    flex-wrap: nowrap; /* 防止按钮换行 */
+        }
+
+        .slider-btn {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #ddd;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            white-space: nowrap; /* 防止文本换行 */
+            height: 30px;
+        }
+
+        .slider-btn.active {
+            background-color: #333;
+            color: white;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 24px;
+            color: white;
+            background-color: black;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            user-select: none;
+            z-index: 2;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+    /* 轮播图图片自适应样式 */
+  .carousel img {
+    max-width: 100%;
+    height: auto;
+  }
+  .carousel img {
+    width: 100%;
+    height: auto;
+    display: block; /* 确保图片不会有额外的空间 */
+  }
+
+  .carousel .item-1, .carousel .item-2, .carousel .item-3 {
+    width: 100%; /* 每项的宽度与轮播容器相同 */
+    height: auto;
+  }
+  .carousel {
+    width: 100%; /* 或者其他具体宽度 */
+    overflow: hidden; /* 隐藏超出容器的部分 */
+    height: auto;
+  }
+  .carousel-text {
+    /* 根据需要添加样式 */
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .carousel-buttons {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.carousel-button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  background-color: #367c39;
+}
+
+.double-underline {
+    text-decoration: underline;
+    position: relative;
+  }
+
+  .double-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.8px; /* 调整这个值来改变两条下划线之间的距离 */
+    width: 100%;
+    border-bottom: 1px solid; /* 下划线的样式 */
+    height: 1px;
+  }
+
+
+  /* 轮播图容器样式，可根据需要调整 */
+  .carousel-container {
+    width: 100%; /* 或其他固定宽度 */
+    margin: auto;
+    height: auto;
+  }
+
+		/* Define the grid layout */
+		.mygrid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-gap: 20px;
+			width: 80%;
+			margin: auto;
+		}
+		.grid_item {
+      background: #FFFFFF;
+      opacity: 1;
+    }
+
+		/* Define the size of the GIFs */
+		.mygif {
+			height: auto;
+			cursor: pointer;
+		}
+		
+		/* Define the modal styles */
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0,0,0,0.9);
+		}
+		
+		.modal-content {
+			margin: auto;
+			display: block;
+			width: 80%;
+			max-width: 800px;
+			max-height: 80%;
+		}
+
+    /* Define the full-screen overlay styles */
+		.overlay {
+			position: fixed;
+			z-index: 999;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background-color: rgba(0,0,0,0.9);
+			display: none;
+		}
+		
+		.overlay img {
+			width: auto;
+			height: 90%;
+			margin: 0 auto;
+			display: block;
+			max-width: 90%;
+			max-height: 90%;
+		}
+
+    /* Define the video styles */
+		.gifvideo {
+			width: 100%;
+			height: auto;
+		}
+
+		/* Define the progress bar styles */
+		.progress {
+			width: 100%;
+			height: 10px;
+			background-color: #ddd;
+			position: relative;
+		}
+
+		.progress-bar {
+			height: 100%;
+			background-color: #4CAF50;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		
+		/* Define the close button style */
+		.close {
+			color: white;
+			position: absolute;
+			top: 10px;
+			right: 25px;
+			font-size: 35px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		
+		.close:hover,
+		.close:focus {
+			color: #bbb;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+  </head>
+  <body>
+
+
+<section class="hero">
+  
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="title is-2 publication-title" style="width: 110%; margin-left: -5%">
+            <img src="images/logo.png" alt="Logo" style="height: 50px; vertical-align: middle;">
+            <!-- Exploring Collaboration Mechanisms for LLM Agents:<br> A Social Psychology View</h2> -->
+            From Black Box to Controller: Steering LM Behavior via Sparse Autoencoder Activations
+          <div class="is-size-5">
+            <!-- <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              <sup>ACL Community</sup><sup>&#x2660;</sup>
+            </span> -->
+            <!-- ,  -->
+            <!-- <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Xin Xu<sup>*</sup><sup>&#x2660;</sup>
+            </span>, 
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Ningyu Zhang<sup>&dagger;</sup><sup>&#x2660;</sup>
+            </span>, 
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Ruibo Liu<sup>&#x2663;</sup>
+            </span>
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Bryan Hooi<sup>&#x2661;</sup>
+            </span>
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Shumin Deng<sup>&dagger;</sup><sup>&#x2661;</sup>
+            </span> -->
+          </div>
+
+          <br>
+          <div class="is-size-5 publication-authors">
+            <!-- <span class="author-block">
+              <sup>&#x2660;</sup>Zhejiang University
+            </span>
+            <span class="author-block">
+              <sup>&#x2661;</sup>National University of Singapore, NUS-NCS Joint Lab
+            </span> -->
+            <span class="author-block">
+              <sup>&#x2663;</sup>NeuroSteer Team
+            </span>
+          </div>
+
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal Contribution</span>
+            <span class="author-block"><sup>&dagger;</sup>Corresponding Author</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2310.02124.pdf" 
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <!-- Huggingface Paper-->
+              <span class="link-block">
+                <a href="https://huggingface.co" 
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                    <img src="./static/images/hugging_face.png" alt="Drive" style="height: 19px; width: 21px; vertical-align: middle;"/>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com" target="_blank" 
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Google Drive Link. -->
+
+              <span class="link-block">
+                <a href="https://drive.google.com/file/d/1KefQzwfINdTZI-vM_eYJis0npc32gBJt/view?usp=sharing" target="_blank" 
+                  class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <img src="./static/images/drive.png" alt="Drive" style="height: 17px; width: 17px; vertical-align: middle;"/>
+                  </span>
+                <span>Log</span>
+                </a>
+              </span>
+              <!--Twitter-->
+              <span class="link-block">
+                <a href="https://twitter.com/" target="_blank" 
+                  class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <img src="./images/logo.png" alt="Drive" style="height: 17px; width: 17px; vertical-align: middle;"/>
+                  </span>
+                <span>Demo</span>
+                </a>
+              </span>
+            </div>
+
+
+
+            <quotebody>
+              <div class="quote-container">
+                  <blockquote class="quote">"Adaptability is about the powerful difference between adapting to cope and adapting to win."</blockquote>
+                  <div class="author">—— Max McKeown </div>
+              </div>
+          </quotebody>
+          </div>
+
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    
+    <div class="hero-body">
+      <img id="teaser" width="120%" src="./images/gif.gif">
+      <h2>
+        An example of the <b>chess move validity</b> task. Given previous chess game moves, agents are required to predict a valid next move for a specified piece.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<div class="columns is-centered has-text-centered">
+  <div class="quote-container">
+    <blockquote class="quote">This website is being updated (for anonymity). </blockquote>
+    <!-- <div class="author">—— Max McKeown </div> -->
+</div>
+</div>
+<!--摘要-->
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Controlling the behavior of the language model (LM) during inference—such as
+    adjusting toxicity, sentiment tendency, and degree of politeness—is crucial for
+    natural language processing. In this work, we introduce <strong>NeuroSteer</strong>,
+    a plug-and-play framework that facilitates the adjustment of the LM behavior
+    without domain-specific training. NeuroSteer leverages a Sparse AutoEncoder
+    (SAE) as an output controller, activating SAE neurons linked to target behaviors,
+    extracting the corresponding feature residuals, and adding them to the model's
+    hidden states to directly influence the generation process. This feature-space
+    intervention amplifies the weight of target features in the latent
+    representations, enabling precise control over the model's output distribution.
+    NeuroSteer effectively alters the LM's stance, sentiment, toxicity, and politeness
+    during inference, achieving SOTA performance across four datasets while
+    maintaining a balance between generation quality and behavioral adjustments.
+    Unlike fine-tuning, NeuroSteer enables fast domain adaptation by calculating
+    activations on hundreds of examples in seconds, without the need for retraining.
+    Furthermore, our work not only provides a possible task adaptation solution,
+    but layer-wise interventions also provide deeper insights into the model's
+    mechanisms, shedding light on how concepts are represented in the LM and how
+    combining feature vectors influences behavior. Code: http://acl.anonymous-demo.fun
+
+            <!-- As Natural Language Processing (NLP) systems are increasingly employed in intricate social environments, a pressing query emerges: <strong><i style="color: red;">Can these NLP systems mirror human-esque collaborative intelligence, in a multi-agent society consisting of multiple large language models (LLMs)?</i></strong> This paper probes the collaboration mechanisms among contemporary NLP systems by melding practical experiments with theoretical insights. 
+            We fabricate four unique 'societies' comprised of LLM agents, 
+            where each agent is characterized by a specific 'trait' ( 
+              <img src="images/easygoing.png" alt="Logo" style="height: 15px; width: 18px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; color: red; text-decoration: underline;">easy-going</span> or 
+              <img src="images/overconfident.png" alt="Logo" style="height: 16px; width: 21px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; color: blue; text-decoration: underline;">overconfident</span> ) and engages in collaboration with a distinct 'thinking pattern' 
+              (<img src="images/debate.png" alt="Logo" style="height: 15px; width: 15px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; text-decoration: underline;">debate</span> or 
+                <img src="images/reflection.png" alt="Logo" style="height: 16px; width: 16px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; text-decoration: underline;">reflection</span>). Through evaluating these multi-agent societies on three benchmark datasets, we discern that certain collaborative strategies not only outshine previous top-tier approaches, but also optimize efficiency (using fewer API tokens). Moreover, our results further illustrate that LLM agents manifest human-like social behaviors, such as conformity and consensus reaching, mirroring foundational social psychology theories. In conclusion, we integrate insights from social psychology to contextualize the collaboration of LLM agents, inspiring further investigations into the collaboration mechanism for LLMs.  -->
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <br>
+    <br>
+    <!-- Simulation Setup -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Method <div class="triangle-down"></div></h2> <!-- onclick="toggleCollapse()"-->
+        
+        <!--轮播1-->
+        <div id="collapseContent" class="slider slider1">
+          <!-- 左右按钮 -->
+          <button class="prev" onclick="plusSlides(-1,'slider1')">&#10094;</button>
+          <button class="next" onclick="plusSlides(1,'slider1')">&#10095;</button>
+
+          <!-- 图片 -->
+          <!-- <div class="slides">
+              <div class="slide">
+                  <img src="./images/setting/setting_overview.png" alt="First Slide">
+                  <br><br>
+                  <div><b>Figure 2: The overview of machine society simulation. Multiple agents with different traits make up diverse machine societies. These agents engage in debate or self-reflection across multiple rounds to complete tasks.</b></div>
+                  <br>
+                   <p align="left">这是左对齐的段落。</p>
+                  <br><br><br><br>
+              </div>
+              <div class="slide">
+                  <img src="./images/setting/setting_detail1.png" alt="Second Slide">
+                  <br><br>
+                  <p style="text-align: left; padding-bottom: 15px;">This figure presents the definition of an individual agent.</p>
+                  <p style="text-align: left; padding-bottom: 15px;">First, we define the traits of an agent, where we have designed two fundamental and contrasting personalities: easygoing and overconfident. The advantage of an overconfident personality is the ability to concentrate resources on significant tasks without wasting time in communication. This trait is often seen in startups where a single shareholder holds a majority stake. On the other hand, the advantage of an easygoing personality is the recognition and correction of one's mistakes. To make this concept more vivid, we represent agents with 'puzzles'. An agent without any missing pieces symbolizes overconfidence, as they tend to be impermeable to external influences. In contrast, agents with missing pieces represent the easygoing nature, indicating openness to others' opinions and fostering better collaboration.</p>
+                  <p style="text-align: left; padding-bottom: 15px;">We then define the thinking patterns of an agent during problem-solving. We have conceptualized two primary methods: debate and reflection. In simple terms, the debate thinking pattern involves acquiring opinions from others, akin to a debate competition. In contrast, the reflection pattern relies solely on oneself, similar to how individuals are isolated from others' answers during an exam. In our paper, 'p<sub>0</sub>' denotes debate, while 'p<sub>1</sub>' represents reflection. For mnemonic purposes, the number '0' resembles an open mouth, symbolizing the need to engage in debate, and the number '1' resembles a closed mouth, indicative of self-reflection.</p>
+                  <br>
+              </div>
+              <div class="slide">
+                  <img src="./images/setting/setting_detail2.png" alt="Third Slide">
+                  <br><br><br>
+                  <p style="text-align: left; padding-bottom: 15px;">This figure illustrates the definition of society. A society is composed of multiple agents. In the main experiment, we define the number of agents as three. This is partly to facilitate decision-making (minority yields to majority) and partly to reduce diversity. We have set the number of collaboration rounds to three.</p>
+                  <p style="text-align: left; padding-bottom: 15px;">Due to the differing traits of agents, there exist various types of societies. Based on permutations and combinations, we can identify four distinct types of societies.</p>
+                  <p style="text-align: left; padding-bottom: 15px;">Given the diversity in agents' thinking patterns, each round of collaboration presents a unique set of combinations. We term the specific array of thinking patterns chosen by agents in any round as the 'collaborative strategy'. Our classification hinges on whether all agents in a round adopt identical thinking patterns. The focus of our main experiment is on those collaborative strategies where uniformity in thinking patterns is observed within a round, while other variations are examined in our ablation studies. Based on permutations and combinations, we identify a total of 2^3 distinct collaborative strategies in the main experiment.</p>
+                  <br><br><br><br>
+              </div>
+              <div class="slide">
+                
+                <br><br>
+                <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Datasets</p>
+                <p align="left">We conduct a rigorous evaluation of the reasoning and decision-making capabilities of various machine societies across three distinct tasks, utilizing diverse collaborative strategies:</p>
+                <ul style="padding-left: 40px; list-style-type: none; text-align: left;">
+                  <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; font-family: 'Times New Roman', serif;">High School Multiple-Choice. </span>Leveraging the MMLU dataset, where problems span high school subjects such as statistics, mathematics, computer science, biology, chemistry, and physics, agents are required to identify the correct answer among four multiple-choice options. Our evaluation set consists of 50 randomly selected
+                    questions from this dataset.</li>
+                  <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic; font-family: 'Times New Roman', serif;">Math. </span>Drawing from MATH dataset, a repository of math
+                    problems sourced from competitive events
+                    and expressed in LaTeX, we assess the model
+                    proficiency in advanced mathematical and scientific reasoning. The dataset segments these problems into five graded difficulty levels, and
+                    for our evaluation, we have randomly chosen
+                    50 cases from Level 3 to 5.</li>
+                  <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic; font-family: 'Times New Roman', serif;">Chess Move Validity. </span>Utilizing the dataset
+                    from the chess state tracking task within
+                    the comprehensive BIG-Bench Benchmark, a sequence of chess
+                    moves denoted in UCI notation is provided.
+                    Agents are required to predict a legitimate subsequent move for a specified chess piece.</li>
+                </ul>
+                <br><br>
+                <p style="font-weight: bold; text-align: left; font-size: 20px; padding-bottom: 15px;">Evaluation Metric</p>
+                <p style="text-align: left; padding-bottom: 15px;">To enhance result reliability,
+                  we present average <b>accuracy (denoted as 'Acc')</b> and their respective standard deviations across five trials. Notably,
+                  our experiments exhibit substantial standard deviations. Hence, we introduce <b>WIN-TIE (denoted as 'W-T')</b> metric,
+                  indicating the frequency (over five trials) where the
+                  accuracy either matches or surpasses the continuous debate baseline. Meanwhile,
+                  we gauge the average token <b>costs (denoted as 'Cost')</b> consumed.</p>
+                <p style="text-align: left;">
+                  It's important to note that there are two categories of metrics for both <b><i>Cost</i></b> and <b><i>W-T</i></b>. '<u>Cost</u>' represents the average number of tokens consumed across all societies for a particular strategy, whereas '<span class="double-underline">Cost</span>' denotes the average number of tokens expended by a single society across all strategies. '<u>W-T</u>' indicates the non-loss situations in all societies for the current strategy compared to strategy <i>p<sub>0</sub>p<sub>0</sub>p<sub>0</sub></i> (with a value range of 0 to 20), and '<span class="double-underline">W-T</span>' reflects the non-loss situations in one society across seven strategies relative to strategy <i>p<sub>0</sub>p<sub>0</sub>p<sub>0</sub></i> (with a value range of 0 to 35).
+                  
+                </p>
+                <br><br><br><br>
+            </div>
+          </div> -->
+          <!-- 图片 -->
+
+          <!-- 按钮 -->
+          <div class="slider-btns">
+              <button class="slider-btn active" onclick="currentSlide(1,'slider1')">Overview</button>
+              <!-- <button class="slider-btn" onclick="currentSlide(2,'slider1')">Single Agent</button>
+              <button class="slider-btn" onclick="currentSlide(3,'slider1')">Society</button>
+              <button class="slider-btn" onclick="currentSlide(4,'slider1')">Dataset & Metric</button> -->
+          </div>
+        </div>
+        <!--/轮播1-->
+
+        
+        <p style="text-align: left; padding-top: 10px;">
+          <!-- The above displays the detailed settings and corresponding motivations of the social simulation, as well as the dataset and evaluation metrics. You can click the buttons above to view the respective contents. -->
+        </p>
+        <br>
+        
+        
+      </div>
+    </div>
+    <!-- /Simulation Setup -->
+    <br>
+    <br>
+    <!-- Main Results -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Main Results <div class="triangle-down"></div></h2>
+        <!--轮播图-->
+        <section class="section">
+          <div class="container is-max-desktop content">
+              <div class="slider slider2">
+                  <!-- 左右按钮 -->
+                  <!-- <button class="prev" onclick="plusSlides(-1,'slider2')">&#10094;</button>
+                  <button class="next" onclick="plusSlides(1,'slider2')">&#10095;</button> -->
+                  <!-- 图片 -->
+                  <!-- <div class="slides">
+                      <div class="slide">
+                          <img src="./images/main_result/gpt.png" alt="First Slide">
+                          <br><br><br><br><br><br>
+                      </div>
+                      <div class="slide">
+                          <img src="./images/main_result/gpt-july.png" alt="Second Slide">
+                      </div>
+                      <div class="slide">
+                          <img src="./images/main_result/llama13.png" alt="Third Slide">
+                      </div>
+                      <div class="slide">
+                        <img src="./images/main_result/llama70.png" alt="Third Slide">
+                      </div>
+                      <div class="slide">
+                        <img src="./images/main_result/qwen.png" alt="Third Slide">
+                      </div>
+                      <div class="slide">
+                        <img src="./images/main_result/mixtral.png" alt="Third Slide">
+                      </div>
+                  </div> -->
+
+                  <!-- 按钮 -->
+                  <div class="slider-btns">
+                      <button class="slider-btn active" onclick="currentSlide(1,'slider2')">GPT2-Small</button>
+                      <button class="slider-btn" onclick="currentSlide(2,'slider2')">Gemma-2-2b</button>
+                      <button class="slider-btn" onclick="currentSlide(3,'slider2')">LlaMA-2 13B Chat(comming soon)</button>
+                      <!-- <br><br>
+                      <button class="slider-btn" onclick="currentSlide(4,'slider2')">LlaMA-2 70B Chat</button>
+                      <button class="slider-btn" onclick="currentSlide(5,'slider2')">Qwen 72B</button>
+                      <button class="slider-btn" onclick="currentSlide(6,'slider2')">Mixtral-8x7B</button> -->
+                  </div>
+              </div>
+          </div>
+        </section>
+        <br>   
+      </div>
+    </div>
+    <br>
+    <br>
+    <!-- /Main Results -->
+
+    <!-- Conformity -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Conformity <div class="triangle-down"></div></h2>
+        <!--轮播图-->
+        <section class="section">
+          <div class="container is-max-desktop content">
+              <div class="slider slider3">
+                  <!-- 左右按钮 -->
+                  <!-- <button class="prev" onclick="plusSlides(-1,'slider3')">&#10094;</button>
+                  <button class="next" onclick="plusSlides(1,'slider3')">&#10095;</button> -->
+
+                  <!-- 图片 -->
+                  <!-- <div class="slides">
+                      <div class="slide">
+                          <img src="./images/conformity/gpt.png" alt="First Slide">
+                          <br>
+                          <p>
+                            Figure 6: Variation of answer correctness in the situation of conformity, under 3-round collaboration, on ChatGPT, where conformity brings about benefits: Ratio(<span style="color: #652a96;">False→True</span> + <span style="color: #00a746;">True→True</span>) > Ratio(<span style="color: #e78b85;">True→False</span> + <span style="color: #325497;">False→False</span>); conformity brings about detriments: Ratio(<span style="color: #652a96;">False→True</span> + <span style="color: #00a746;">True→True</span>) < Ratio(<span style="color: #e78b85;">True→False</span> + <span style="color: #325497;">False→False</span>).
+                          </p><br><br>
+                      </div>
+                      <div class="slide">
+                          <img src="./images/conformity/llama13.png" alt="Third Slide">
+                          <br>
+                          <p>
+                            Figure 28: Variation of answer correctness in the situation of conformity, using LlaMA2-13B-chat, where conformity brings about benefits: Ratio(<span style="color: #652a96;">False→True</span> + <span style="color: #00a746;">True→True</span>) > Ratio(<span style="color: #e78b85;">True→False</span> + <span style="color: #325497;">False→False</span>); conformity brings about detriments: Ratio(<span style="color: #652a96;">False→True</span> + <span style="color: #00a746;">True→True</span>) < Ratio(<span style="color: #e78b85;">True→False</span> + <span style="color: #325497;">False→False</span>).
+                          </p>
+                      </div>
+                      <div class="slide">
+                        <img src="./images/conformity/llama70.png" alt="Third Slide">
+                        <br>
+                        <p>
+                          Figure 37: Variation of answer correctness in the situation of conformity, using LlaMA2-70B-chat, where conformity brings about benefits: Ratio(<span style="color: #652a96;">False→True</span> + <span style="color: #00a746;">True→True</span>) > Ratio(<span style="color: #e78b85;">True→False</span> + <span style="color: #325497;">False→False</span>); conformity brings about detriments: Ratio(<span style="color: #652a96;">False→True</span> + <span style="color: #00a746;">True→True</span>) < Ratio(<span style="color: #e78b85;">True→False</span> + <span style="color: #325497;">False→False</span>).
+                        </p>
+                      </div>
+                      <div class="slide">
+                        <img src="./images/conformity/qwen.png" alt="Third Slide">
+                        <br>
+                        <p>
+                          Figure 51: Variation of answer correctness in the situation of conformity, using Qwen 72B, where conformity brings about benefits: Ratio(<span style="color: #652a96;">False→True</span> + <span style="color: #00a746;">True→True</span>) > Ratio(<span style="color: #e78b85;">True→False</span> + <span style="color: #325497;">False→False</span>); conformity brings about detriments: Ratio(<span style="color: #652a96;">False→True</span> + <span style="color: #00a746;">True→True</span>) < Ratio(<span style="color: #e78b85;">True→False</span> + <span style="color: #325497;">False→False</span>).
+                        </p>
+                      </div>
+                      <div class="slide">
+                        <img src="./images/conformity/mixtral.png" alt="Third Slide">
+                        <br>
+                        <p>
+                          Figure 65: Variation of answer correctness in the situation of conformity, using Mixtral-8x7B, where conformity brings about benefits: Ratio(<span style="color: #652a96;">False→True</span> + <span style="color: #00a746;">True→True</span>) > Ratio(<span style="color: #e78b85;">True→False</span> + <span style="color: #325497;">False→False</span>); conformity brings about detriments: Ratio(<span style="color: #652a96;">False→True</span> + <span style="color: #00a746;">True→True</span>) < Ratio(<span style="color: #e78b85;">True→False</span> + <span style="color: #325497;">False→False</span>).
+                        </p>
+                      </div>
+                  </div> -->
+
+                  <!-- 按钮 -->
+                  <!-- <div class="slider-btns">
+                      <button class="slider-btn active" onclick="currentSlide(1,'slider3')">GPT-3.5-turbo-1106</button>
+                      <button class="slider-btn" onclick="currentSlide(2,'slider3')">LlaMA-2 13B Chat</button>
+                      <button class="slider-btn" onclick="currentSlide(3,'slider3')">LlaMA-2 70B Chat</button>
+                      <button class="slider-btn" onclick="currentSlide(4,'slider3')">Qwen 72B</button>
+                      <button class="slider-btn" onclick="currentSlide(5,'slider3')">Mixtral-8x7B</button>
+                  </div> -->
+              </div>
+              <!-- <p style="text-align: left; padding-top: 10px;">
+                For conformity, we solely focus on agents actively engaging in debate, disregarding those in reflection during a given round. Let the answer of the i-th agent at j-th round be denoted as \(a_{i,j}\) . For the k-th agent at j-th round, if \(Frequency(\{a_{i,j−1}|i ∈[1, n]\}) = a_{k,j} \), we identify this as the occurrence of conformity by agent k at j-th round, where \(Frequency(\cdot)\) represents the most frequently given answer (excluding instances where all answers occur only once, as such cases are considered as nonconformity). Additionally, we categorize the correctness of answers both before and after conformity into four cases, with 'True' denoting correct and 'False' denoting incorrect.
+              </p>
+              <p style="text-align: left; padding-top: 10px; ">
+                We classify the phenomenon of conformity into four distinct categories, based on how answers change. The rationale behind this classification stems from the notion that conformity within human societies acts as a double-edged sword. Its benefits or drawbacks are often best assessed by looking at the outcomes. To illustrate with a couple of unsuitable examples: Imagine a scenario where, at a red traffic light, one individual decides to jaywalk and others follow suit. This type of conformity is detrimental. Conversely, consider a situation during an examination where I am surrounded by high-achieving students. I sneak a glance at their answers and notice they match mine. In this case, I choose not to alter my answer (or, if their answers differ from mine, I adjust mine to theirs), and it turns out that the official answer aligns with these answers, making this form of conformity advantageous (It’s important to note that this is merely an example for illustration purposes. Cheating is unethical, and we certainly do not condone it).
+              </p> -->
+          </div>
+        </section>
+
+        <br>
+      </div>
+    </div>
+    <!-- /Conformity -->
+
+    <!-- Consensus -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Consensus <div class="triangle-down"></div></h2>
+        <!--轮播图-->
+        <section class="section">
+          <div class="container is-max-desktop content">
+              <div class="slider slider4">
+                  <!-- 左右按钮 -->
+                  <!-- <button class="prev" onclick="plusSlides(-1,'slider4')">&#10094;</button>
+                  <button class="next" onclick="plusSlides(1,'slider4')">&#10095;</button> -->
+
+                  <!-- 图片 -->
+                  <!-- <div class="slides">
+                      <div class="slide">
+                          <img src="./images/consensus/gpt.png" alt="First Slide">
+                          <br>
+                          <p>
+                            Figure 7: Average quantity of consensus clusters (i.e., unique answers among multiple agents) under different rounds of collaboration with 3-round collaborative strategies, using ChatGPT. Smaller quantity of consensus clusters, more easier it is to reach a consensus. Round 0 is equal to self-consistency. More details are in Appendix G.1.
+                          </p>
+                          <br><br>
+                      </div>
+                      <div class="slide">
+                          <img src="./images/consensus/llama13.png" alt="Third Slide">
+                          <br>
+                          <p>
+                            Figure 29: Average quantity of consensus clusters (i.e., unique answers among multiple agents) under different rounds of collaboration with 3-round collaborative strategies, on LlaMA2-13B-chat. Smaller quantity of consensus clusters, more easier it is to reach a consensus. Round 0 is equal to self-consistency.
+                          </p>
+                      </div>
+                      <div class="slide">
+                        <img src="./images/consensus/llama70.png" alt="Third Slide">
+                        <br>
+                        <p>
+                          Figure 38: Average quantity of consensus clusters (i.e., unique answers among multiple agents) under different rounds of collaboration with 3-round collaborative strategies, on LlaMA2-70B-chat. Smaller quantity of consensus clusters, more easier it is to reach a consensus. Round 0 is equal to self-consistency.
+                        </p>
+                      </div>
+                      <div class="slide">
+                        <img src="./images/consensus/qwen.png" alt="Third Slide">
+                        <br>
+                        <p>
+                          Figure 52: Average quantity of consensus clusters (i.e., unique answers among multiple agents) under different rounds of collaboration with 3-round collaborative strategies, using Qwen 72B. Smaller quantity of consensus clusters, more easier it is to reach a consensus. Round 0 is equal to self-consistency.
+                        </p>
+                      </div>
+                      <div class="slide">
+                        <img src="./images/consensus/mixtral.png" alt="Third Slide">
+                        <br>
+                        <p>
+                          Figure 66: Average quantity of consensus clusters (i.e., unique answers among multiple agents) under different rounds of collaboration with 3-round collaborative strategies, using Mixtral-8×7B. Smaller quantity of consensus clusters, more easier it is to reach a consensus. Round 0 is equal to self-consistency.
+                        </p>
+                      </div>
+                  </div> -->
+
+                  <!-- 按钮 -->
+                  <!-- <div class="slider-btns">
+                      <button class="slider-btn active" onclick="currentSlide(1,'slider4')">GPT-3.5-turbo-1106</button>
+                      <button class="slider-btn" onclick="currentSlide(2,'slider4')">LlaMA-2 13B Chat</button>
+                      <button class="slider-btn" onclick="currentSlide(3,'slider4')">LlaMA-2 70B Chat</button>
+                      <button class="slider-btn" onclick="currentSlide(4,'slider4')">Qwen 72B</button>
+                      <button class="slider-btn" onclick="currentSlide(5,'slider4')">Mixtral-8x7B</button>
+                  </div> -->
+              </div>
+              <!-- <p style="text-align: left; padding-top: 10px; ">
+                For consensus, we examine the evolution of the number of distinct answers (i.e., consensus clusters) with increasing rounds of collaboration. Let the answer of the i-th agent at time j be denoted as ai,j . For the j-th round, consensus clusters is defined as \( \left \|\text{Set}(\{a_{i,j}|i\in[1,n]\})\right \| \), where \( \left \|\text{Set}(\cdot)\right \| \) represents the count of different answers. 
+                Here, we have gathered and analyzed the overall performances of various societies.
+              </p> -->
+          </div>
+        </section>
+
+        <br>
+      </div>
+    </div>
+    <!-- /Consensus -->
+
+    <!-- Take away-->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Take away <div class="triangle-down"></div></h2>
+        <!--轮播图-->
+        <section class="section">
+          <div class="container is-max-desktop content">
+              <div class="slider slider5">
+                  <!-- 左右按钮 -->
+                  <!-- <button class="prev" onclick="plusSlides(-1,'slider5')">&#10094;</button>
+                  <button class="next" onclick="plusSlides(1,'slider5')">&#10095;</button> -->
+                  <!-- 图片 -->
+                  <!-- <div class="slides">
+                      <div class="slide">
+                        <ul style="padding-left: 40px; list-style-type: none; text-align: left; padding-right: 60px;">
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. Starting or dominating multi-agent collaboration with debate, yields relatively optimal outcomes.</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. Totally reflection strategy like <b><i>p<sub>1</sub>p<sub>1</sub>p<sub>1</sub></i></b> is generally worst in performance.
+                          </span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">3. For difficult tasks, debate combined with continuous reflection is superior; for simple tasks, self-consistency or reflection is enough.</span></li>
+                        </ul>
+                      </div>
+                      <div class="slide">
+                        <ul style="padding-left: 40px; list-style-type: none; padding-right: 60px;text-align: left;">
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. Surprisingly, "overconfident" agents lose that trait in groups!</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. Setting agent numbers to 3 is generally advantageous in performance and cost.</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">3. The rounds of collaboration is relatively suitable to set as 3, both effective and efficient.</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">4. Employing the uniform thinking patterns across all agents within a round enhance efficacy.</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">5. Scaling up the number of agents is better than scaling up the number of collaboration rounds.</span></li>
+                        </ul>
+                        <br><br><br>
+                      </div>
+                      <div class="slide">
+                        <ul style="padding-left: 40px; padding-right: 60px;list-style-type: none; text-align: left;">
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. Collaboration is generally effective in the group, especially for tackling difficult tasks.</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. Collaboration widely leads to conformity, either beneficial or harmful in performance.</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">3. As the number of rounds increases, benefits of conformity will decrease; and detriments of conformity will increase.
+                          </span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">4. The totally easy-going society is more likely to reach a consensus, debate helps to consensus reaching while reflection impedes it.
+                          </span></li>
+                        </ul>
+                      </div>
+                      
+                  </div> -->
+
+                  <!-- 按钮 -->
+                  <!-- <div class="slider-btns">
+                      <button class="slider-btn active" onclick="currentSlide(1,'slider5')">Strategy Selection</button>
+                      <button class="slider-btn" onclick="currentSlide(2,'slider5')">Society Settings</button>
+                      <button class="slider-btn" onclick="currentSlide(3,'slider5')">Social Psychology View</button>
+                  </div> -->
+              </div>
+          </div>
+        </section>
+
+        <br>
+      </div>
+    </div>
+    <!-- /Take away-->
+  </div>
+</section>
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @article{NeuroSteer: From blackbox to controller,
+        author       {NeuroSteer Team (anonymous)}
+      }      
+</code></pre>
+  </div>
+</section>
+
+<section class="section" id="Acknowledgement">
+  <div class="container is-max-desktop content">
+    <p>
+      This website is adapted from <a
+      href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license"
+                                          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+      Commons Attribution-ShareAlike 4.0 International License</a>.
+    </p>
+  </div>
+</section>
+
+
+<script>
+
+
+
+// 创建两个独立的索引，分别用于两个轮播图
+// 创建一个对象来存储每个轮播图的状态
+var sliders = {
+    slider1: { index: 1 },
+    slider2: { index: 1 },
+    slider3: { index: 1 },
+    slider4: { index: 1 },
+    slider5: { index: 1 },
+    slider6: { index: 1 },
+    slider7: { index: 1 },
+    slider8: { index: 1 },
+};
+
+// 初始化轮播图
+showSlides(sliders.slider1.index, 'slider1');
+showSlides(sliders.slider2.index, 'slider2');
+showSlides(sliders.slider3.index, 'slider3');
+showSlides(sliders.slider4.index, 'slider4');
+showSlides(sliders.slider5.index, 'slider5');
+showSlides(sliders.slider6.index, 'slider6');
+showSlides(sliders.slider7.index, 'slider7');
+showSlides(sliders.slider8.index, 'slider8');
+
+function plusSlides(n, sliderClass) {
+    var slider = sliders[sliderClass];
+    var slides = document.querySelectorAll(`.${sliderClass} .slide`);
+    var dots = document.querySelectorAll(`.${sliderClass} .slider-btn`);
+    var slidesWrapper = document.querySelector(`.${sliderClass} .slides`);
+    var slideWidth = slides[0].clientWidth;
+
+    slider.index += n;
+    if (slider.index > slides.length) { slider.index = 1 }
+    if (slider.index < 1) { slider.index = slides.length }
+    var slideMove = -(slider.index - 1) * slideWidth;
+
+    updateSlider(slidesWrapper, dots, slideMove, slider.index);
+}
+
+function currentSlide(n, sliderClass) {
+    var slider = sliders[sliderClass];
+    var slides = document.querySelectorAll(`.${sliderClass} .slide`);
+    var dots = document.querySelectorAll(`.${sliderClass} .slider-btn`);
+    var slidesWrapper = document.querySelector(`.${sliderClass} .slides`);
+    var slideWidth = slides[0].clientWidth;
+    var slideMove = -(n - 1) * slideWidth;
+
+    slider.index = n;
+    updateSlider(slidesWrapper, dots, slideMove, slider.index);
+}
+
+function updateSlider(slidesWrapper, dots, slideMove, slideIndex) {
+    for (var i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slidesWrapper.style.transform = 'translateX(' + slideMove + 'px)';
+    dots[slideIndex - 1].className += " active";
+}
+
+function toggleCollapse() {
+    var content = document.getElementById("collapseContent");
+    if (content) {
+        content.classList.toggle("collapsed");
+    }
+}
+
+        // var slideIndex = 1;
+        // showSlides(slideIndex);
+
+        // function plusSlides(n) {
+        //     var slides = document.getElementsByClassName("slide");
+        //     slideIndex += n;
+        //     if (slideIndex > slides.length) {slideIndex = 1}
+        //     if (slideIndex < 1) {slideIndex = slides.length}
+        //     showSlides(slideIndex);
+        // }
+
+        // function currentSlide(n) {
+        //     showSlides(slideIndex = n);
+        // }
+
+        
+
+        // function showSlides(n) {
+        //     var slides = document.getElementsByClassName("slide");
+        //     var dots = document.getElementsByClassName("slider-btn");
+        //     var slidesWrapper = document.querySelector('.slides');
+
+        //     // 计算滑动的位置
+        //     var slideWidth = slides[0].clientWidth; // 获取单个幻灯片的宽度
+        //     var slideMove = -(n - 1) * slideWidth; // 计算应该滑动的距离
+
+        //     for (var i = 0; i < slides.length; i++) {
+        //         dots[i].className = dots[i].className.replace(" active", "");
+        //     }
+
+        //     // 使用 transform 属性来平滑地滑动幻灯片
+        //     slidesWrapper.style.transform = 'translateX(' + slideMove + 'px)';
+            
+        //     // 更新圆点按钮状态
+        //     dots[n-1].className += " active";
+        // }
+
+
+
+  // Get the modal element
+  // var modal = document.getElementById("myModal");
+  var overlay = document.getElementById("overlay");
+  var span = document.getElementsByClassName("close")[0];
+
+
+  // Get the image element and the close button element
+  //  // display the GIF as it is
+  // var img = document.getElementById("modalImg");
+  // var img = document.getElementById("overlayImg");
+  // Add event listeners to each GIF element
+  var gifs = document.getElementsByClassName("mygif");
+  for (var i = 0; i < gifs.length; i++) {
+  gifs[i].addEventListener("click", function() {
+      //  // display the GIF as it is
+      // // Set the modal image source and display the modal
+      // img.src = this.src;
+
+      // display the GIF as a new image, will play from the begining
+      var img = document.createElement("img");
+      img.src = this.src.replace(".png", ".gif");
+
+      // Add the img element to the overlay content and display the overlay
+      document.getElementById("overlayContent").appendChild(img);
+      
+
+      // modal.style.display = "block";
+      overlay.style.display = "block";
+
+      // Hide the body overflow
+              document.body.style.overflow = "hidden";
+  });
+  }
+
+  // Add event listener to close button
+  span.addEventListener("click", function() {
+  // Remove the img element from the overlay content, hide the overlay, and restore the body overflow
+          document.getElementById("overlayContent").innerHTML = "";
+
+  // Hide the modal
+  // modal.style.display = "none";
+  overlay.style.display = "none";
+  document.body.style.overflow = "auto";
+  });
+
+
+
+</script>
+</body>
+</html>
