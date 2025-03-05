@@ -445,14 +445,14 @@
                 <a href="https://neurosteer.anonymous-demo.fun/" target="_blank" 
                   class="external-link button is-normal is-rounded">
                   <span class="icon">
-                      <img src="./images/logo.png" alt="Drive" style="height: 17px; width: 17px; vertical-align: middle;"/>
+                      <img src="./images/logo.png" alt="Drive" style="height: 17px; width: 30px; vertical-align: middle;"/>
                   </span>
                 <span>Demo[OK but Unstable]</span>
                 </a>
               </span>
             </div>
 
-            <span class="link-block">
+            <!-- <span class="link-block">
               <a href="https://neurosteer-backup2.anonymous-demo.fun/" target="_blank" 
                 class="external-link button is-normal is-rounded">
                 <span class="icon">
@@ -461,7 +461,7 @@
               <span>Demo-backup</span>
               </a>
             </span>
-          </div>
+          </div> -->
 
 
 
@@ -796,68 +796,70 @@
     <!-- Consensus -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-six-fifths">
-        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Open Source for NLP Community (Code & Demo) [soon]<div class="triangle-down"></div></h2>
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Open Source for NLP Community (Code & Demo) [Github]<div class="triangle-down"></div></h2>
         <!--轮播图-->
         <section class="section">
           <div class="container is-max-desktop content">
               <div class="slider slider4">
                   <!-- 左右按钮 -->
-                  <!-- <button class="prev" onclick="plusSlides(-1,'slider4')">&#10094;</button>
-                  <button class="next" onclick="plusSlides(1,'slider4')">&#10095;</button> -->
+                  <button class="prev" onclick="plusSlides(-1,'slider4')">&#10094;</button>
+                  <button class="next" onclick="plusSlides(1,'slider4')">&#10095;</button>
 
                   <!-- 图片 -->
-                  <!-- <div class="slides">
+                  <div class="slides">
                       <div class="slide">
-                          <img src="./images/consensus/gpt.png" alt="First Slide">
+                          <img src="./images/opensource/irony.gif" alt="First Slide">
                           <br>
                           <p>
-                            Figure 7: Average quantity of consensus clusters (i.e., unique answers among multiple agents) under different rounds of collaboration with 3-round collaborative strategies, using ChatGPT. Smaller quantity of consensus clusters, more easier it is to reach a consensus. Round 0 is equal to self-consistency. More details are in Appendix G.1.
+                            Figure 7: The combined intervention cases. With supportive and toxic steering, gpt-2 seems to support a certain law, but in fact it contains full of irony. (All the cases in this slide use a combined intervention of NeuroSteer, and the maximum length of the LM generated tokens is 30. )
                           </p>
                           <br><br>
                       </div>
                       <div class="slide">
-                          <img src="./images/consensus/llama13.png" alt="Third Slide">
+                          <img src="./images/opensource/against.gif" alt="2 Slide">
                           <br>
                           <p>
-                            Figure 29: Average quantity of consensus clusters (i.e., unique answers among multiple agents) under different rounds of collaboration with 3-round collaborative strategies, on LlaMA2-13B-chat. Smaller quantity of consensus clusters, more easier it is to reach a consensus. Round 0 is equal to self-consistency.
+                            Figure 8: GPT fights against something with passionate emotions in a relatively polite manner. These generation parameters are quite suitable for debates in a parliament.
                           </p>
                       </div>
                       <div class="slide">
-                        <img src="./images/consensus/llama70.png" alt="Third Slide">
+                        <img src="./images/opensource/fight_aganst.png" alt="3 Slide">
                         <br>
                         <p>
-                          Figure 38: Average quantity of consensus clusters (i.e., unique answers among multiple agents) under different rounds of collaboration with 3-round collaborative strategies, on LlaMA2-70B-chat. Smaller quantity of consensus clusters, more easier it is to reach a consensus. Round 0 is equal to self-consistency.
+                          Figure 9: With support (-12), positive sentiment (+83), polite (+10). These generations are quite suitable for CEO.
                         </p>
                       </div>
                       <div class="slide">
-                        <img src="./images/consensus/qwen.png" alt="Third Slide">
+                        <img src="./images/opensource/blame.png" alt="4 Slide">
                         <br>
                         <p>
-                          Figure 52: Average quantity of consensus clusters (i.e., unique answers among multiple agents) under different rounds of collaboration with 3-round collaborative strategies, using Qwen 72B. Smaller quantity of consensus clusters, more easier it is to reach a consensus. Round 0 is equal to self-consistency.
+                          Figure 9: With supportive and negative combined intervention (Stance + Sentiment). LLM will blame something and support the law.
                         </p>
                       </div>
+                      
                       <div class="slide">
-                        <img src="./images/consensus/mixtral.png" alt="Third Slide">
+                        <img src="./images/opensource/do.png" alt="Fifth Slide">
                         <br>
                         <p>
-                          Figure 66: Average quantity of consensus clusters (i.e., unique answers among multiple agents) under different rounds of collaboration with 3-round collaborative strategies, using Mixtral-8×7B. Smaller quantity of consensus clusters, more easier it is to reach a consensus. Round 0 is equal to self-consistency.
+                          Figure 11: We have open-sourced relevant vectors in our GitHub repository that can be used for previous tasks. Theoretically, the NeuroSteer can be applied to any task. The detailed cookbook of NeuroSteer can be found on our GitHub.
                         </p>
+                        <br><br>
+                        <br>
                       </div>
-                  </div> -->
+                  </div>
 
                   <!-- 按钮 -->
-                  <!-- <div class="slider-btns">
-                      <button class="slider-btn active" onclick="currentSlide(1,'slider4')">GPT-3.5-turbo-1106</button>
-                      <button class="slider-btn" onclick="currentSlide(2,'slider4')">LlaMA-2 13B Chat</button>
-                      <button class="slider-btn" onclick="currentSlide(3,'slider4')">LlaMA-2 70B Chat</button>
-                      <button class="slider-btn" onclick="currentSlide(4,'slider4')">Qwen 72B</button>
-                      <button class="slider-btn" onclick="currentSlide(5,'slider4')">Mixtral-8x7B</button>
-                  </div> -->
+                  <div class="slider-btns">
+                      <button class="slider-btn active" onclick="currentSlide(1,'slider4')">Combined Intervention</button>
+                      <button class="slider-btn" onclick="currentSlide(2,'slider4')">Case:  Parliament</button>
+                      <button class="slider-btn" onclick="currentSlide(3,'slider4')">Case: CEO</button>
+                      <button class="slider-btn" onclick="currentSlide(4,'slider4')">Case: Law</button>
+                      <button class="slider-btn" onclick="currentSlide(5,'slider4')">For other task</button>
+                  </div>
               </div>
-              <!-- <p style="text-align: left; padding-top: 10px; ">
-                For consensus, we examine the evolution of the number of distinct answers (i.e., consensus clusters) with increasing rounds of collaboration. Let the answer of the i-th agent at time j be denoted as ai,j . For the j-th round, consensus clusters is defined as \( \left \|\text{Set}(\{a_{i,j}|i\in[1,n]\})\right \| \), where \( \left \|\text{Set}(\cdot)\right \| \) represents the count of different answers. 
-                Here, we have gathered and analyzed the overall performances of various societies.
-              </p> -->
+              <p style="text-align: left; padding-top: 10px; ">
+                We open-source our demo and code to the NLP community. Our demo achieves quantitative regulation and combined intervention for four types of features of the GPT-2. Everyone can transfer our method to their own tasks. Theoretically, the NeuroSteer method is applicable to any modality and any task.  
+              </p>
           </div>
         </section>
 
@@ -869,53 +871,50 @@
     <!-- Take away-->
     <div class="columns is-centered has-text-centered">
       <div class="column is-six-fifths">
-        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Take away <div class="triangle-down"></div></h2>
+        <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">Take away & To Do <div class="triangle-down"></div></h2>
         <!--轮播图-->
         <section class="section">
           <div class="container is-max-desktop content">
               <div class="slider slider5">
                   <!-- 左右按钮 -->
-                  <!-- <button class="prev" onclick="plusSlides(-1,'slider5')">&#10094;</button>
-                  <button class="next" onclick="plusSlides(1,'slider5')">&#10095;</button> -->
+                  <button class="prev" onclick="plusSlides(-1,'slider5')">&#10094;</button>
+                  <button class="next" onclick="plusSlides(1,'slider5')">&#10095;</button>
                   <!-- 图片 -->
-                  <!-- <div class="slides">
+                  <div class="slides">
                       <div class="slide">
                         <ul style="padding-left: 40px; list-style-type: none; text-align: left; padding-right: 60px;">
-                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. Starting or dominating multi-agent collaboration with debate, yields relatively optimal outcomes.</span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. Totally reflection strategy like <b><i>p<sub>1</sub>p<sub>1</sub>p<sub>1</sub></i></b> is generally worst in performance.
+                          
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. NeuroSteer enables precise LM behavior control by activating SAE neurons linked to target features. Compared to LLM original space, the sparse representation space avoiding noise and cross-feature disturb.</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. NeuroSteer interventions are computationally efficient and plug and play. It also supports cross-task adaptability requiring no training.
                           </span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">3. For difficult tasks, debate combined with continuous reflection is superior; for simple tasks, self-consistency or reflection is enough.</span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">3. For LLM, mid-layer interventions (6-8) optimize behavior control, while shallow layers cause repetition and deep layers focus on more abstract concepts. From the shallow layer to the deep layer in the LM, each layer is respectively responsible for processing information from the specific to the abstract. </span></li>
+                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">4. Combining feature vectors allows complex behavior steering, such as generating polite disagreements or nuanced emotional responses.</span></li>
                         </ul>
                       </div>
                       <div class="slide">
-                        <ul style="padding-left: 40px; list-style-type: none; padding-right: 60px;text-align: left;">
-                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. Surprisingly, "overconfident" agents lose that trait in groups!</span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. Setting agent numbers to 3 is generally advantageous in performance and cost.</span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">3. The rounds of collaboration is relatively suitable to set as 3, both effective and efficient.</span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">4. Employing the uniform thinking patterns across all agents within a round enhance efficacy.</span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">5. Scaling up the number of agents is better than scaling up the number of collaboration rounds.</span></li>
-                        </ul>
-                        <br><br><br>
+                        <img src="./images/todo/tmpF51A.png" alt="4 Slide">
+                        <br>
+                        <p>
+                          Figure 9: Todo list on Github.
+                        </p>
                       </div>
                       <div class="slide">
-                        <ul style="padding-left: 40px; padding-right: 60px;list-style-type: none; text-align: left;">
-                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. Collaboration is generally effective in the group, especially for tackling difficult tasks.</span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. Collaboration widely leads to conformity, either beneficial or harmful in performance.</span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">3. As the number of rounds increases, benefits of conformity will decrease; and detriments of conformity will increase.
-                          </span></li>
-                          <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">4. The totally easy-going society is more likely to reach a consensus, debate helps to consensus reaching while reflection impedes it.
-                          </span></li>
+                        
+                        <ul style="padding-left: 40px; list-style-type: none; text-align: left; padding-right: 60px;">
+                        <img src="./images/github/tmpE70E.png" alt="4 Slide">
+                          
+                          <br><br>
                         </ul>
                       </div>
                       
-                  </div> -->
+                  </div>
 
                   <!-- 按钮 -->
-                  <!-- <div class="slider-btns">
-                      <button class="slider-btn active" onclick="currentSlide(1,'slider5')">Strategy Selection</button>
-                      <button class="slider-btn" onclick="currentSlide(2,'slider5')">Society Settings</button>
-                      <button class="slider-btn" onclick="currentSlide(3,'slider5')">Social Psychology View</button>
-                  </div> -->
+                  <div class="slider-btns">
+                      <button class="slider-btn active" onclick="currentSlide(1,'slider5')">Insights</button>
+                      <button class="slider-btn" onclick="currentSlide(2,'slider5')">TODO</button>
+                      <button class="slider-btn" onclick="currentSlide(3,'slider5')">GO GO GO!</button>
+                  </div>
               </div>
           </div>
         </section>
@@ -928,8 +927,14 @@
 </section>
 
 
+<!-- Thank you for your time and feedback!  -->
 
-
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">:)</h2>
+    Thank you for your time and feedback! 
+  </div>
+</section>
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
@@ -940,9 +945,37 @@
 </code></pre>
   </div>
 </section>
+<section class="section" id="Acknowledgement">
+  <div class="container is-max-desktop content">
+    <h2 class="title">DEMO Backup</h2>
+    <p>
+      Due to university firewall restrictions and certain blocking policies, our demo website may experience occasional instability. You can refer to the GIF or try the following backup links:
+    </p>
+    <ul>
+      <li><a href="https://neurosteer-backup.keqichen.top/" target="_blank">Demo Backup 1</a></li>
+      <li><a href="https://neurosteer.anonymous-demo.fun/" target="_blank">Demo Backup 2</a></li>
+      <li><a href="https://neurosteer-backup2.anonymous-demo.fun/" target="_blank">Demo Backup 3</a></li>
+    </ul>
+  </div>
+  <!-- <div class="btns">
+    <a href="https://neurosteer-backup.keqichen.top/" class="link-btn" onclick="currentSlide(1,'slider2')">Demo black up 1</a>
+    <a href="https://neurosteer.anonymous-demo.fun/" class="link-btn" onclick="currentSlide(2,'slider2')">Demo black up 2</a>
+    <a href="https://neurosteer-backup2.anonymous-demo.fun/" class="-btn" onclick="currentSlide(3,'slider2')">Demo black up 3</a> -->
+    <!-- <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(4,'slider2')">Computing Resource</a> -->
+    <!-- <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(5,'slider2')">Multi-Media(Ing)</a> -->
+    <!-- <br><br>
+    <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(4,'slider2')">LlaMA-2 70B Chat</a>
+    <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(5,'slider2')">Qwen 72B</a>
+    <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(6,'slider2')">Mixtral-8x7B</a> -->
+  </div>
+</section>
+
+
+
 
 <section class="section" id="Acknowledgement">
   <div class="container is-max-desktop content">
+    <h2 class="title">License</h2>
     <p>
       This website is adapted from <a
       href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license"
