@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script>
+<script src='https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js'></script>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="EmoAvatar: (This website will by update before 2025-07-20 PM 8:00 AOE)">
+  <meta name="keywords" content="Multi-agent, Social Psychology, Collaboration">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EmoAvatar: LLM's Quantitative Behavior Controller</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="icon" href="./static/images/logo.png">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+
+  quotebody {
+        font-family: 'Times New Roman', serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        margin: 0;
+        background-color: #fff;
+        color: #333;
+        text-align: left; /* Centering text */
+    }
+
+    .quote-container {
+        max-width: 600px;
+        padding: 20px;
+    }
+
+    .quote {
+        font-size: 20px;
+        font-style: italic;
+        margin: 0;
+    }
+
+    .author {
+        font-size: 16px;
+        margin-top: 20px; /* Space between quote and author */
+        text-align: right;
+    }
+
+    /*上面是名言*/
+
+    .triangle-down {
+        width: 0;
+        height: 0;
+        display: inline-block;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 20px solid black; /* Adjust the color as needed */
+        margin-left: 5px; /* Optional, for spacing */
+        vertical-align: middle;
+    }
+    .collapsed {
+      display: none;
+      transition: height 0.3s ease-out;
+    }
+/* 轮播图样式 */
+/* 轮播图样式 */
+      .slider {
+            width: 100%;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            transition: 0.6s ease-in-out;
+        }
+
+        .slider-btns {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex; /* 使用Flexbox布局 */
+    justify-content: center; /* 水平居中所有按钮 */
+    flex-wrap: nowrap; /* 防止按钮换行 */
+        }
+
+        .slider-btn {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #ddd;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            white-space: nowrap; /* 防止文本换行 */
+            height: 30px;
+        }
+
+        .slider-btn.active {
+            background-color: #333;
+            color: white;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 24px;
+            color: white;
+            background-color: black;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            user-select: none;
+            z-index: 2;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+    /* 轮播图图片自适应样式 */
+  .carousel img {
+    max-width: 100%;
+    height: auto;
+  }
+  .carousel img {
+    width: 100%;
+    height: auto;
+    display: block; /* 确保图片不会有额外的空间 */
+  }
+
+  .carousel .item-1, .carousel .item-2, .carousel .item-3 {
+    width: 100%; /* 每项的宽度与轮播容器相同 */
+    height: auto;
+  }
+  .carousel {
+    width: 100%; /* 或者其他具体宽度 */
+    overflow: hidden; /* 隐藏超出容器的部分 */
+    height: auto;
+  }
+  .carousel-text {
+    /* 根据需要添加样式 */
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .carousel-buttons {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.carousel-button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  background-color: #367c39;
+}
+
+.double-underline {
+    text-decoration: underline;
+    position: relative;
+  }
+
+  .double-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.8px; /* 调整这个值来改变两条下划线之间的距离 */
+    width: 100%;
+    border-bottom: 1px solid; /* 下划线的样式 */
+    height: 1px;
+  }
+/*蓝色链接*/
+.bold-blue-link {
+    color: blue;
+    font-weight: bold;
+    text-decoration: none; /* 可选：去掉下划线 */
+}
+.bold-blue-link:hover {
+    color: darkblue; /* 鼠标悬停时的颜色 */
+}
+  /* 轮播图容器样式，可根据需要调整 */
+  .carousel-container {
+    width: 100%; /* 或其他固定宽度 */
+    margin: auto;
+    height: auto;
+  }
+
+		/* Define the grid layout */
+		.mygrid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-gap: 20px;
+			width: 80%;
+			margin: auto;
+		}
+		.grid_item {
+      background: #FFFFFF;
+      opacity: 1;
+    }
+
+		/* Define the size of the GIFs */
+		.mygif {
+			height: auto;
+			cursor: pointer;
+		}
+		
+		/* Define the modal styles */
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0,0,0,0.9);
+		}
+		
+		.modal-content {
+			margin: auto;
+			display: block;
+			width: 80%;
+			max-width: 800px;
+			max-height: 80%;
+		}
+
+    /* Define the full-screen overlay styles */
+		.overlay {
+			position: fixed;
+			z-index: 999;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background-color: rgba(0,0,0,0.9);
+			display: none;
+		}
+		
+		.overlay img {
+			width: auto;
+			height: 90%;
+			margin: 0 auto;
+			display: block;
+			max-width: 90%;
+			max-height: 90%;
+		}
+
+    /* Define the video styles */
+		.gifvideo {
+			width: 100%;
+			height: auto;
+		}
+
+		/* Define the progress bar styles */
+		.progress {
+			width: 100%;
+			height: 10px;
+			background-color: #ddd;
+			position: relative;
+		}
+
+		.progress-bar {
+			height: 100%;
+			background-color: #4CAF50;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		
+		/* Define the close button style */
+		.close {
+			color: white;
+			position: absolute;
+			top: 10px;
+			right: 25px;
+			font-size: 35px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		
+		.close:hover,
+		.close:focus {
+			color: #bbb;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+  </head>
+  <body>
+
+
+<section class="hero">
+  
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="title is-2 publication-title" style="width: 110%; margin-left: -5%">
+            <img src="images/logo.png" alt="Logo" style="height: 50px; vertical-align: middle;">
+            <!-- Exploring Collaboration Mechanisms for LLM Agents:<br> A Social Psychology View</h2> -->
+            From Black Box to Controller: Steering LM Behavior via Sparse Autoencoder Activations
+          <div class="is-size-5">
+            <!-- <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              <sup>ACL Community</sup><sup>&#x2660;</sup>
+            </span> -->
+            <!-- ,  -->
+            <!-- <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Xin Xu<sup>*</sup><sup>&#x2660;</sup>
+            </span>, 
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Ningyu Zhang<sup>&dagger;</sup><sup>&#x2660;</sup>
+            </span>, 
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Ruibo Liu<sup>&#x2663;</sup>
+            </span>
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Bryan Hooi<sup>&#x2661;</sup>
+            </span>
+            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
+              Shumin Deng<sup>&dagger;</sup><sup>&#x2661;</sup>
+            </span> -->
+          </div>
+
+          <br>
+          <div class="is-size-5 publication-authors">
+            <!-- <span class="author-block">
+              <sup>&#x2660;</sup>Zhejiang University
+            </span>
+            <span class="author-block">
+              <sup>&#x2661;</sup>National University of Singapore, NUS-NCS Joint Lab
+            </span> -->
+            <span class="author-block">
+              <sup>&#x2663;</sup>EmoAvatar Team
+            </span>
+          </div>
+
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal Contribution</span>
+            <span class="author-block"><sup>&dagger;</sup>Corresponding Author</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2310.02124.pdf" 
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <!-- Huggingface Paper-->
+              <span class="link-block">
+                <a href="https://anonymous.4open.science" 
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                    <img src="./static/images/hugging_face.png" alt="Drive" style="height: 19px; width: 21px; vertical-align: middle;"/>
+                  </span>
+                  <span>Data[soon]</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://anonymous.4open.science" target="_blank" 
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code[OK]</span>
+                  </a>
+              </span>
+              <!-- Google Drive Link. -->
+
+              <span class="link-block">
+                <a href="https://anonymous.4open.science" target="_blank" 
+                  class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <img src="./static/images/drive.png" alt="Drive" style="height: 17px; width: 17px; vertical-align: middle;"/>
+                  </span>
+                <span>Log[soon]</span>
+                </a>
+              </span>
+              <!--Twitter-->
+              <span class="link-block">
+                <a href="https://neurosteer.anonymous-demo.fun/" target="_blank" 
+                  class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <img src="./images/logo.png" alt="Drive" style="height: 17px; width: 30px; vertical-align: middle;"/>
+                  </span>
+                <span>Demo[OKK]</span>
+                </a>
+              </span>
+            </div>
+
+
+
+            <quotebody>
+              <div class="quote-container">
+                  <blockquote class="quote">"All that we know, all that we are, comes from the way our neurons are connected."</blockquote>
+                  <div class="author">—— Mental Representation Theory</div>
+              </div>
+          </quotebody>
+          </div>
+
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">What EmoAvatar can do?
+        <div class="triangle-down"></div></h2>
+      </div>
+      <img id="teaser" width="120%" src="./images/demo_gif/demo_main_1.7b.gif">
+      <!-- NeuroSteer\images\demo_gif\main.gif -->
+      <h2>
+        <strong> We propose EmoAvatar,
+    {"label": "咒骂", "symbol": "🤬|💢|🗯️"}, -->
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<div class="columns is-centered has-text-centered">
+  <div class="quote-container">
+    <blockquote class="quote">This website is being updated (for anonymity). </blockquote>
+    <!-- <div class="author">—— Max McKeown </div> -->
+</div>
+</div>
+
+<!-- Thank you for your time and feedback!  -->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">:)</h2>
+    Thank you for your time and feedback! 
+  </div>
+</section>
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @article{NeuroSteer: From blackbox to controller,
+        author       {NeuroSteer Team (anonymous)}
+      }      
+</code></pre>
+  </div>
+</section>
+<section class="section" id="Acknowledgement">
+  <div class="container is-max-desktop content">
+    <h2 class="title">DEMO Backup</h2>
+    <p>
+      Due to university firewall restrictions and certain blocking policies, our demo website may experience occasional instability. You can refer to the GIF or try the following backup links:
+    </p>
+    <ul>
+      <li><a href="https://neurosteer-backup.keqichen.top/" target="_blank">Demo Backup 1</a></li>
+      <li><a href="https://neurosteer.anonymous-demo.fun/" target="_blank">Demo Backup 2</a></li>
+      <li><a href="https://neurosteer-backup2.anonymous-demo.fun/" target="_blank">Demo Backup 3</a></li>
+    </ul>
+  </div>
+  <!-- <div class="btns">
+    <a href="https://neurosteer-backup.keqichen.top/" class="link-btn" onclick="currentSlide(1,'slider2')">Demo black up 1</a>
+    <a href="https://neurosteer.anonymous-demo.fun/" class="link-btn" onclick="currentSlide(2,'slider2')">Demo black up 2</a>
+    <a href="https://neurosteer-backup2.anonymous-demo.fun/" class="-btn" onclick="currentSlide(3,'slider2')">Demo black up 3</a> -->
+    <!-- <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(4,'slider2')">Computing Resource</a> -->
+    <!-- <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(5,'slider2')">Multi-Media(Ing)</a> -->
+    <!-- <br><br>
+    <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(4,'slider2')">LlaMA-2 70B Chat</a>
+    <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(5,'slider2')">Qwen 72B</a>
+    <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(6,'slider2')">Mixtral-8x7B</a> -->
+  </div>
+</section>
+
+
+
+
+<section class="section" id="Acknowledgement">
+  <div class="container is-max-desktop content">
+    <h2 class="title">License</h2>
+    <p>
+      This website is adapted from <a
+      href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license"
+                                          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+      Commons Attribution-ShareAlike 4.0 International License</a>.
+    </p>
+  </div>
+</section>
+
+
+<script>
+
+
+
+// 创建两个独立的索引，分别用于两个轮播图
+// 创建一个对象来存储每个轮播图的状态
+var sliders = {
+    slider1: { index: 1 },
+    slider2: { index: 1 },
+    slider3: { index: 1 },
+    slider4: { index: 1 },
+    slider5: { index: 1 },
+    slider6: { index: 1 },
+    slider7: { index: 1 },
+    slider8: { index: 1 },
+};
+
+// 初始化轮播图
+showSlides(sliders.slider1.index, 'slider1');
+showSlides(sliders.slider2.index, 'slider2');
+showSlides(sliders.slider3.index, 'slider3');
+showSlides(sliders.slider4.index, 'slider4');
+showSlides(sliders.slider5.index, 'slider5');
+showSlides(sliders.slider6.index, 'slider6');
+showSlides(sliders.slider7.index, 'slider7');
+showSlides(sliders.slider8.index, 'slider8');
+
+function plusSlides(n, sliderClass) {
+    var slider = sliders[sliderClass];
+    var slides = document.querySelectorAll(`.${sliderClass} .slide`);
+    var dots = document.querySelectorAll(`.${sliderClass} .slider-btn`);
+    var slidesWrapper = document.querySelector(`.${sliderClass} .slides`);
+    var slideWidth = slides[0].clientWidth;
+
+    slider.index += n;
+    if (slider.index > slides.length) { slider.index = 1 }
+    if (slider.index < 1) { slider.index = slides.length }
+    var slideMove = -(slider.index - 1) * slideWidth;
+
+    updateSlider(slidesWrapper, dots, slideMove, slider.index);
+}
+
+function currentSlide(n, sliderClass) {
+    var slider = sliders[sliderClass];
+    var slides = document.querySelectorAll(`.${sliderClass} .slide`);
+    var dots = document.querySelectorAll(`.${sliderClass} .slider-btn`);
+    var slidesWrapper = document.querySelector(`.${sliderClass} .slides`);
+    var slideWidth = slides[0].clientWidth;
+    var slideMove = -(n - 1) * slideWidth;
+
+    slider.index = n;
+    updateSlider(slidesWrapper, dots, slideMove, slider.index);
+}
+
+function updateSlider(slidesWrapper, dots, slideMove, slideIndex) {
+    for (var i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slidesWrapper.style.transform = 'translateX(' + slideMove + 'px)';
+    dots[slideIndex - 1].className += " active";
+}
+
+function toggleCollapse() {
+    var content = document.getElementById("collapseContent");
+    if (content) {
+        content.classList.toggle("collapsed");
+    }
+}
+
+        // var slideIndex = 1;
+        // showSlides(slideIndex);
+
+        // function plusSlides(n) {
+        //     var slides = document.getElementsByClassName("slide");
+        //     slideIndex += n;
+        //     if (slideIndex > slides.length) {slideIndex = 1}
+        //     if (slideIndex < 1) {slideIndex = slides.length}
+        //     showSlides(slideIndex);
+        // }
+
+        // function currentSlide(n) {
+        //     showSlides(slideIndex = n);
+        // }
+
+        
+
+        // function showSlides(n) {
+        //     var slides = document.getElementsByClassName("slide");
+        //     var dots = document.getElementsByClassName("slider-btn");
+        //     var slidesWrapper = document.querySelector('.slides');
+
+        //     // 计算滑动的位置
+        //     var slideWidth = slides[0].clientWidth; // 获取单个幻灯片的宽度
+        //     var slideMove = -(n - 1) * slideWidth; // 计算应该滑动的距离
+
+        //     for (var i = 0; i < slides.length; i++) {
+        //         dots[i].className = dots[i].className.replace(" active", "");
+        //     }
+
+        //     // 使用 transform 属性来平滑地滑动幻灯片
+        //     slidesWrapper.style.transform = 'translateX(' + slideMove + 'px)';
+            
+        //     // 更新圆点按钮状态
+        //     dots[n-1].className += " active";
+        // }
+
+
+
+  // Get the modal element
+  // var modal = document.getElementById("myModal");
+  var overlay = document.getElementById("overlay");
+  var span = document.getElementsByClassName("close")[0];
+
+
+  // Get the image element and the close button element
+  //  // display the GIF as it is
+  // var img = document.getElementById("modalImg");
+  // var img = document.getElementById("overlayImg");
+  // Add event listeners to each GIF element
+  var gifs = document.getElementsByClassName("mygif");
+  for (var i = 0; i < gifs.length; i++) {
+  gifs[i].addEventListener("click", function() {
+      //  // display the GIF as it is
+      // // Set the modal image source and display the modal
+      // img.src = this.src;
+
+      // display the GIF as a new image, will play from the begining
+      var img = document.createElement("img");
+      img.src = this.src.replace(".png", ".gif");
+
+      // Add the img element to the overlay content and display the overlay
+      document.getElementById("overlayContent").appendChild(img);
+      
+
+      // modal.style.display = "block";
+      overlay.style.display = "block";
+
+      // Hide the body overflow
+              document.body.style.overflow = "hidden";
+  });
+  }
+
+  // Add event listener to close button
+  span.addEventListener("click", function() {
+  // Remove the img element from the overlay content, hide the overlay, and restore the body overflow
+          document.getElementById("overlayContent").innerHTML = "";
+
+  // Hide the modal
+  // modal.style.display = "none";
+  overlay.style.display = "none";
+  document.body.style.overflow = "auto";
+  });
+
+
+
+</script>
+</body>
+</html>
