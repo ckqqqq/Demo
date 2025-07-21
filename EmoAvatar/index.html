@@ -1,713 +1,298 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <script>
-    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
-</script>
-<script src='https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js'></script>
-  <meta charset="utf-8">
-  <meta name="description"
-        content="EmoAvatar: (This website will by update before 2025-07-20 PM 8:00 AOE)">
-  <meta name="keywords" content="Multi-agent, Social Psychology, Collaboration">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EmoAvatar: LLM's Quantitative Behavior Controller</title>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+    <title>
+      AI4AI Team - ACM MM 2025 Avatar-based Multimodal Empathetic Conversation
+      Challenge
+    </title>
+    <link
+      href="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/style.css"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: "monica-ext-font_YIBBBFG";
+        src: url("chrome-extension://ofpnmcalabcbjgholdjcjblkibolbppb/static/fonts/Hind-Light.otf");
+        font-weight: 300;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "monica-ext-font_YIBBBFG";
+        src: url("chrome-extension://ofpnmcalabcbjgholdjcjblkibolbppb/static/fonts/Hind-Regular.otf");
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "monica-ext-font_YIBBBFG";
+        src: url("chrome-extension://ofpnmcalabcbjgholdjcjblkibolbppb/static/fonts/Hind-Medium.otf");
+        font-weight: 500;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "monica-ext-font_YIBBBFG";
+        src: url("chrome-extension://ofpnmcalabcbjgholdjcjblkibolbppb/static/fonts/Hind-SemiBold.otf");
+        font-weight: 600;
+        font-display: swap;
+      }
+    </style>
+    <style id="monica-reading-highlight-style">
+      .monica-reading-highlight {
+        animation: fadeInOut 1.5s ease-in-out;
+      }
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="icon" href="./static/images/logo.png">
-  <link rel="stylesheet" href="./static/css/index.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-
-  <style>
-
-  quotebody {
-        font-family: 'Times New Roman', serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: auto;
-        margin: 0;
-        background-color: #fff;
-        color: #333;
-        text-align: left; /* Centering text */
-    }
-
-    .quote-container {
-        max-width: 600px;
-        padding: 20px;
-    }
-
-    .quote {
-        font-size: 20px;
-        font-style: italic;
-        margin: 0;
-    }
-
-    .author {
-        font-size: 16px;
-        margin-top: 20px; /* Space between quote and author */
-        text-align: right;
-    }
-
-    /*上面是名言*/
-
-    .triangle-down {
-        width: 0;
-        height: 0;
-        display: inline-block;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 20px solid black; /* Adjust the color as needed */
-        margin-left: 5px; /* Optional, for spacing */
-        vertical-align: middle;
-    }
-    .collapsed {
-      display: none;
-      transition: height 0.3s ease-out;
-    }
-/* 轮播图样式 */
-/* 轮播图样式 */
-      .slider {
-            width: 100%;
-            position: relative;
-            margin: auto;
-            overflow: hidden;
+      @keyframes fadeInOut {
+        0%,
+        100% {
+          background-color: transparent;
         }
-
-        .slides {
-            display: flex;
-            transition: transform 0.6s ease-in-out;
+        30%,
+        70% {
+          background-color: rgba(2, 118, 255, 0.2);
         }
-
-        .slide {
-            min-width: 100%;
-            transition: 0.6s ease-in-out;
-        }
-
-        .slider-btns {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex; /* 使用Flexbox布局 */
-    justify-content: center; /* 水平居中所有按钮 */
-    flex-wrap: nowrap; /* 防止按钮换行 */
-        }
-
-        .slider-btn {
-            cursor: pointer;
-            display: inline-block;
-            margin: 0 5px;
-            padding: 5px 10px;
-            background-color: #ddd;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            white-space: nowrap; /* 防止文本换行 */
-            height: 30px;
-        }
-
-        .slider-btn.active {
-            background-color: #333;
-            color: white;
-        }
-
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 30px;
-            height: 30px;
-            text-align: center;
-            line-height: 30px;
-            font-size: 24px;
-            color: white;
-            background-color: black;
-            border: none;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-            user-select: none;
-            z-index: 2;
-        }
-
-        .next {
-            right: 10px;
-        }
-
-        .prev {
-            left: 10px;
-        }
-
-    /* 轮播图图片自适应样式 */
-  .carousel img {
-    max-width: 100%;
-    height: auto;
-  }
-  .carousel img {
-    width: 100%;
-    height: auto;
-    display: block; /* 确保图片不会有额外的空间 */
-  }
-
-  .carousel .item-1, .carousel .item-2, .carousel .item-3 {
-    width: 100%; /* 每项的宽度与轮播容器相同 */
-    height: auto;
-  }
-  .carousel {
-    width: 100%; /* 或者其他具体宽度 */
-    overflow: hidden; /* 隐藏超出容器的部分 */
-    height: auto;
-  }
-  .carousel-text {
-    /* 根据需要添加样式 */
-    text-align: center;
-    padding: 10px;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  .carousel-buttons {
-  text-align: center;
-  padding: 10px 0;
-}
-
-.carousel-button {
-  margin: 0 5px;
-  padding: 5px 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.carousel-button:hover {
-  background-color: #367c39;
-}
-
-.double-underline {
-    text-decoration: underline;
-    position: relative;
-  }
-
-  .double-underline::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -0.8px; /* 调整这个值来改变两条下划线之间的距离 */
-    width: 100%;
-    border-bottom: 1px solid; /* 下划线的样式 */
-    height: 1px;
-  }
-/*蓝色链接*/
-.bold-blue-link {
-    color: blue;
-    font-weight: bold;
-    text-decoration: none; /* 可选：去掉下划线 */
-}
-.bold-blue-link:hover {
-    color: darkblue; /* 鼠标悬停时的颜色 */
-}
-  /* 轮播图容器样式，可根据需要调整 */
-  .carousel-container {
-    width: 100%; /* 或其他固定宽度 */
-    margin: auto;
-    height: auto;
-  }
-
-		/* Define the grid layout */
-		.mygrid {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			grid-gap: 20px;
-			width: 80%;
-			margin: auto;
-		}
-		.grid_item {
-      background: #FFFFFF;
-      opacity: 1;
-    }
-
-		/* Define the size of the GIFs */
-		.mygif {
-			height: auto;
-			cursor: pointer;
-		}
-		
-		/* Define the modal styles */
-		.modal {
-			display: none;
-			position: fixed;
-			z-index: 1;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			overflow: auto;
-			background-color: rgba(0,0,0,0.9);
-		}
-		
-		.modal-content {
-			margin: auto;
-			display: block;
-			width: 80%;
-			max-width: 800px;
-			max-height: 80%;
-		}
-
-    /* Define the full-screen overlay styles */
-		.overlay {
-			position: fixed;
-			z-index: 999;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			overflow: hidden;
-			background-color: rgba(0,0,0,0.9);
-			display: none;
-		}
-		
-		.overlay img {
-			width: auto;
-			height: 90%;
-			margin: 0 auto;
-			display: block;
-			max-width: 90%;
-			max-height: 90%;
-		}
-
-    /* Define the video styles */
-		.gifvideo {
-			width: 100%;
-			height: auto;
-		}
-
-		/* Define the progress bar styles */
-		.progress {
-			width: 100%;
-			height: 10px;
-			background-color: #ddd;
-			position: relative;
-		}
-
-		.progress-bar {
-			height: 100%;
-			background-color: #4CAF50;
-			position: absolute;
-			top: 0;
-			left: 0;
-		}
-		
-		/* Define the close button style */
-		.close {
-			color: white;
-			position: absolute;
-			top: 10px;
-			right: 25px;
-			font-size: 35px;
-			font-weight: bold;
-			cursor: pointer;
-		}
-		
-		.close:hover,
-		.close:focus {
-			color: #bbb;
-			text-decoration: none;
-			cursor: pointer;
-		}
-	</style>
+      }
+    </style>
   </head>
-  <body>
 
+  <body
+    monica-locale="zh_CN"
+    monica-version="5.5.1"
+    monica-id="ofpnmcalabcbjgholdjcjblkibolbppb"
+  >
+    <div class="content">
+      <h1>
+        <span
+          ><img
+            src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/logo.png"
+            style="height: 80px" /></span
+        ><strong><br />Avatar-based Multimodal Empathetic Conversation</strong>
+      </h1>
+      <div class="gallery" style="margin-bottom: 0">
+        <div class="row" style="justify-content: center; text-align: center">
+          <video
+            width="319"
+            height="405"
+            controls
+            style="display: block; margin: 0 auto"
+          >
+            <source
+              src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/welcome_demo.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+        <div
+          class="row"
+          style="justify-content: space-evenly; padding: 0; margin-bottom: 0"
+        >
+          <figure style="width: 100%; margin: 25 0 0; text-align: center">
+            <img
+              src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/teaser.png"
+              style="height: 400px; width: auto"
+            />
+          </figure>
+        </div>
+      </div>
 
-<section class="hero">
-  
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h2 class="title is-2 publication-title" style="width: 110%; margin-left: -5%">
-            <img src="images/logo.png" alt="Logo" style="height: 50px; vertical-align: middle;">
-            <!-- Exploring Collaboration Mechanisms for LLM Agents:<br> A Social Psychology View</h2> -->
-            EmoAvatar: (This website will be deployed before 2025-07-20 PM 8:00 AOE)
-          <div class="is-size-5">
-            <!-- <span class="author-block" style="color:#00A4EF;font-weight:normal;">
-              <sup>ACL Community</sup><sup>&#x2660;</sup>
-            </span> -->
-            <!-- ,  -->
-            <!-- <span class="author-block" style="color:#00A4EF;font-weight:normal;">
-              Xin Xu<sup>*</sup><sup>&#x2660;</sup>
-            </span>, 
-            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
-              Ningyu Zhang<sup>&dagger;</sup><sup>&#x2660;</sup>
-            </span>, 
-            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
-              Ruibo Liu<sup>&#x2663;</sup>
-            </span>
-            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
-              Bryan Hooi<sup>&#x2661;</sup>
-            </span>
-            <span class="author-block" style="color:#00A4EF;font-weight:normal;">
-              Shumin Deng<sup>&dagger;</sup><sup>&#x2661;</sup>
-            </span> -->
-          </div>
+      <p id="authors" class="serif">
+        <span style="font-size: 1.2em; font-weight: bold">Team AI4AI</span
+        ><br />
+        <span style="font-size: 1.1em; margin-top: 0.5em">
+          <strong>Advisors:</strong> Li Ya, Gao Yingming </span
+        ><br />
+        <span style="font-size: 1.1em; margin-top: 0.5em">
+          <strong>Team Members:</strong> Chen Keqi, Sun Zekai, Fu Wenxin, Geng
+          Yizhong, Lu Qihang, Guo Puyuan </span
+        ><br />
+        <span style="font-size: 1em; margin-top: 0.8em">
+          <a>ACM Multimedia 2025 Grand Challenge</a>
+        </span>
+      </p>
 
-          <br>
-          <div class="is-size-5 publication-authors">
-            <!-- <span class="author-block">
-              <sup>&#x2660;</sup>Zhejiang University
-            </span>
-            <span class="author-block">
-              <sup>&#x2661;</sup>National University of Singapore, NUS-NCS Joint Lab
-            </span> -->
-            <span class="author-block">
-              <sup>&#x2663;</sup>EmoAvatar Team
-            </span>
-          </div>
+      <font size="+2">
+        <!-- <div style="text-align: center; display: flex; justify-content: space-between; margin: 20px 60px;"> -->
+        <div
+          style="
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 160px;
+            font-size: 20;
+          "
+        >
+          <a target="_blank" ,="" href="https://arxiv.org/pdf/2502.04976v1">
+            <img
+              src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/th.png"
+              alt="arxiv"
+              ,=""
+              style="width: 25px"
+            />[Paper] </a
+          >&nbsp;&nbsp;&nbsp;&nbsp;
+          <a
+            target="_blank"
+            ,=""
+            href="https://github.com/AvaMERG/AvaMERG-Baseline"
+          >
+            <img
+              src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/github.png"
+              alt="github"
+              ,=""
+              style="width: 25px"
+            />[Github] </a
+          >&nbsp;&nbsp;&nbsp;&nbsp;
+          <a target="_blank" ,="" href="https://avamerg.github.io/">
+            <img
+              src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/hugface.png"
+              alt="homepage"
+              ,=""
+              style="width: 25px"
+            />[Homepage] </a
+          >&nbsp;&nbsp;&nbsp;&nbsp;
+          <a
+            target="_blank"
+            ,=""
+            href="https://avamerg.github.io/MM25-challenge/"
+          >
+            <img
+              src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/modelscope.png"
+              alt="challenge"
+              ,=""
+              style="width: 25px"
+            />[Challenge] </a
+          >&nbsp;&nbsp;&nbsp;&nbsp;
+          <a
+            target="_blank"
+            ,=""
+            href="https://mp.weixin.qq.com/s/OovwqQ13huPd9-cSO6nnbg"
+          >
+            <img
+              src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/wechat.png"
+              alt="wechat"
+              ,=""
+              style="width: 25px"
+            />[WeChat] </a
+          >&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+      </font>
+    </div>
 
-          <!-- <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>*</sup>Equal Contribution</span>
-            <span class="author-block"><sup>&dagger;</sup>Corresponding Author</span>
-          </div> -->
+    <div class="content">
+      <h2 style="text-align: center"><strong>Abstract</strong></h2>
+      <p>
+        The
+        <b
+          ><span style="color: #8eadde"
+            >ACM Multimedia 2025 Grand Challenge of Avatar-based Multimodal
+            Empathetic Conversation</span
+          ></b
+        >
+        focuses on developing advanced AI systems capable of understanding and
+        generating empathetic responses in multimodal dialogue contexts.
+      </p>
+      <div id="teasers">
+        <img
+          src="./EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/algo_framework.png"
+          ,=""
+          style="width: 100%"
+        />
+        <figcaption></figcaption>
+      </div>
+      <p>
+        <strong>Task 1: Multimodal-Aware Empathetic Response Generation</strong
+        ><br />
+        Participants are required to develop a model capable of processing
+        multimodal dialogue contexts and generating textual responses. Our team
+        AI4AI achieved <strong>3rd place</strong> in this task.
+      </p>
+      <p>
+        <strong>Task 2: Multimodal Empathetic Response Generation</strong><br />
+        Participants are required to develop a model capable of processing
+        multimodal dialogue contexts and generating empathetic multimodal
+        responses. Our team AI4AI achieved <strong>2nd place</strong> in this
+        task.
+      </p>
+      <p>
+        This challenge addresses the growing need for AI systems that can
+        understand human emotions and respond appropriately in multimodal
+        conversations, combining text, audio, and visual information to create
+        more natural and empathetic human-AI interactions.
+      </p>
+    </div>
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <!-- <span class="link-block">
-                <a href="https://arxiv.org/pdf/2310.02124.pdf" 
-                   class="external-link button is-normal is-rounded">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span> -->
-              <!-- Huggingface Paper-->
-              <span class="link-block">
-                <a href="https://anonymous.4open.science" 
-                   class="external-link button is-normal is-rounded">
-                  <span class="icon">
-                    <img src="./static/images/hugging_face.png" alt="Drive" style="height: 19px; width: 21px; vertical-align: middle;"/>
-                  </span>
-                  <span>Data[soon]</span>
-                </a>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://anonymous.4open.science" target="_blank" 
-                   class="external-link button is-normal is-rounded">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code[OK]</span>
-                  </a>
-              </span>
-              <!-- Google Drive Link. -->
+    <div class="content">
+      <h2 style="text-align: center"><strong>Gallery</strong></h2>
 
-              <span class="link-block">
-                <a href="https://anonymous.4open.science" target="_blank" 
-                  class="external-link button is-normal is-rounded">
-                  <span class="icon">
-                      <img src="./static/images/drive.png" alt="Drive" style="height: 17px; width: 17px; vertical-align: middle;"/>
-                  </span>
-                <span>Log[soon]</span>
-                </a>
-              </span>
-              <!--Twitter-->
-              <span class="link-block">
-                <a href="https://neurosteer.anonymous-demo.fun/" target="_blank" 
-                  class="external-link button is-normal is-rounded">
-                  <span class="icon">
-                      <img src="./images/logo.png" alt="Drive" style="height: 17px; width: 30px; vertical-align: middle;"/>
-                  </span>
-                <span>Demo[OKK]</span>
-                </a>
-              </span>
-            </div>
+      <h3>dialogue between two people</h3>
+      <div class="gallery">
+        <div class="row" style="margin-bottom: 20px">
+          <video width="433" height="323" controls>
+            <source
+              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/english/natural_talk1.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <video width="433" height="323" controls>
+            <source
+              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/english/natural_talk2.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+      </div>
 
+      <h3>short conversations</h3>
+      <div class="gallery">
+        <div class="row" style="margin-bottom: 20px">
+          <video width="433" height="323" controls>
+            <source
+              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/short_1_model_5.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <video width="433" height="323" controls>
+            <source
+              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/short_2_model_5.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+      </div>
 
+      <h3>general conversations with paralanguage</h3>
+      <div class="gallery">
+        <div class="row" style="margin-bottom: 20px">
+          <video width="433" height="323" controls>
+            <source
+              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/middle_1_model_5.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <video width="433" height="323" controls>
+            <source
+              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/middle_2_model_5.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+      </div>
 
-            <quotebody>
-              <div class="quote-container">
-                  <blockquote class="quote">"All that we know, all that we are, comes from the way our neurons are connected."</blockquote>
-                  <div class="author">—— Mental Representation Theory</div>
-              </div>
-          </quotebody>
-          </div>
-
-          
-
+      <h3>long video</h3>
+      <div class="gallery">
+        <div class="row">
+          <video width="433" height="323" controls>
+            <source
+              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/long_1_model_5.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <video width="433" height="323" controls>
+            <source
+              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/long_2_model_5.mp4"
+              type="video/mp4"
+            />
+          </video>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    
-    <div class="hero-body">
-      <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3" style="background-color: #f3f3f3; width: 100%; display: block; height:60px; line-height: 60px;">What EmoAvatar can do?
-        <div class="triangle-down"></div></h2>
-      </div>
-      <img id="teaser" width="120%" src="./images/demo_gif/demo_main_1.7b.gif">
-      <!-- NeuroSteer\images\demo_gif\main.gif -->
-      <h2>
-        <strong> EmoAvatar: (This website will by update before 2025-07-20 PM 8:00 AOE)
-      </h2>
-    </div>
-  </div>
-</section>
-
-
-<div class="columns is-centered has-text-centered">
-  <div class="quote-container">
-    <blockquote class="quote">This website is being updated (for anonymity). </blockquote>
-    <!-- <div class="author">—— Max McKeown </div> -->
-</div>
-</div>
-
-<!-- Thank you for your time and feedback!  -->
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">:)</h2>
-    Thank you for your time and feedback! 
-  </div>
-</section>
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>
-      @article{NeuroSteer: From blackbox to controller,
-        author       {NeuroSteer Team (anonymous)}
-      }      
-</code></pre>
-  </div>
-</section>
-<section class="section" id="Acknowledgement">
-  <div class="container is-max-desktop content">
-    <!-- <h2 class="title">DEMO Backup</h2> -->
-    <!-- <p>
-      Due to university firewall restrictions and certain blocking policies, our demo website may experience occasional instability. You can refer to the GIF or try the following backup links:
-    </p> -->
-    <ul>
-    </ul>
-  </div>
-  <!-- <div class="btns">
-    <a href="https://neurosteer-backup.keqichen.top/" class="link-btn" onclick="currentSlide(1,'slider2')">Demo black up 1</a>
-    <a href="https://neurosteer.anonymous-demo.fun/" class="link-btn" onclick="currentSlide(2,'slider2')">Demo black up 2</a>
-    <a href="https://neurosteer-backup2.anonymous-demo.fun/" class="-btn" onclick="currentSlide(3,'slider2')">Demo black up 3</a> -->
-    <!-- <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(4,'slider2')">Computing Resource</a> -->
-    <!-- <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(5,'slider2')">Multi-Media(Ing)</a> -->
-    <!-- <br><br>
-    <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(4,'slider2')">LlaMA-2 70B Chat</a>
-    <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(5,'slider2')">Qwen 72B</a>
-    <a href="https://www.example.com" class="slider-btn" onclick="currentSlide(6,'slider2')">Mixtral-8x7B</a> -->
-  </div>
-</section>
-
-
-
-
-<section class="section" id="Acknowledgement">
-  <div class="container is-max-desktop content">
-    <h2 class="title">License</h2>
-    <p>
-      This website is adapted from <a
-      href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license"
-                                          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-      Commons Attribution-ShareAlike 4.0 International License</a>.
-    </p>
-  </div>
-</section>
-
-
-<script>
-
-
-
-// 创建两个独立的索引，分别用于两个轮播图
-// 创建一个对象来存储每个轮播图的状态
-var sliders = {
-    slider1: { index: 1 },
-    slider2: { index: 1 },
-    slider3: { index: 1 },
-    slider4: { index: 1 },
-    slider5: { index: 1 },
-    slider6: { index: 1 },
-    slider7: { index: 1 },
-    slider8: { index: 1 },
-};
-
-// 初始化轮播图
-showSlides(sliders.slider1.index, 'slider1');
-showSlides(sliders.slider2.index, 'slider2');
-showSlides(sliders.slider3.index, 'slider3');
-showSlides(sliders.slider4.index, 'slider4');
-showSlides(sliders.slider5.index, 'slider5');
-showSlides(sliders.slider6.index, 'slider6');
-showSlides(sliders.slider7.index, 'slider7');
-showSlides(sliders.slider8.index, 'slider8');
-
-function plusSlides(n, sliderClass) {
-    var slider = sliders[sliderClass];
-    var slides = document.querySelectorAll(`.${sliderClass} .slide`);
-    var dots = document.querySelectorAll(`.${sliderClass} .slider-btn`);
-    var slidesWrapper = document.querySelector(`.${sliderClass} .slides`);
-    var slideWidth = slides[0].clientWidth;
-
-    slider.index += n;
-    if (slider.index > slides.length) { slider.index = 1 }
-    if (slider.index < 1) { slider.index = slides.length }
-    var slideMove = -(slider.index - 1) * slideWidth;
-
-    updateSlider(slidesWrapper, dots, slideMove, slider.index);
-}
-
-function currentSlide(n, sliderClass) {
-    var slider = sliders[sliderClass];
-    var slides = document.querySelectorAll(`.${sliderClass} .slide`);
-    var dots = document.querySelectorAll(`.${sliderClass} .slider-btn`);
-    var slidesWrapper = document.querySelector(`.${sliderClass} .slides`);
-    var slideWidth = slides[0].clientWidth;
-    var slideMove = -(n - 1) * slideWidth;
-
-    slider.index = n;
-    updateSlider(slidesWrapper, dots, slideMove, slider.index);
-}
-
-function updateSlider(slidesWrapper, dots, slideMove, slideIndex) {
-    for (var i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slidesWrapper.style.transform = 'translateX(' + slideMove + 'px)';
-    dots[slideIndex - 1].className += " active";
-}
-
-function toggleCollapse() {
-    var content = document.getElementById("collapseContent");
-    if (content) {
-        content.classList.toggle("collapsed");
-    }
-}
-
-        // var slideIndex = 1;
-        // showSlides(slideIndex);
-
-        // function plusSlides(n) {
-        //     var slides = document.getElementsByClassName("slide");
-        //     slideIndex += n;
-        //     if (slideIndex > slides.length) {slideIndex = 1}
-        //     if (slideIndex < 1) {slideIndex = slides.length}
-        //     showSlides(slideIndex);
-        // }
-
-        // function currentSlide(n) {
-        //     showSlides(slideIndex = n);
-        // }
-
-        
-
-        // function showSlides(n) {
-        //     var slides = document.getElementsByClassName("slide");
-        //     var dots = document.getElementsByClassName("slider-btn");
-        //     var slidesWrapper = document.querySelector('.slides');
-
-        //     // 计算滑动的位置
-        //     var slideWidth = slides[0].clientWidth; // 获取单个幻灯片的宽度
-        //     var slideMove = -(n - 1) * slideWidth; // 计算应该滑动的距离
-
-        //     for (var i = 0; i < slides.length; i++) {
-        //         dots[i].className = dots[i].className.replace(" active", "");
-        //     }
-
-        //     // 使用 transform 属性来平滑地滑动幻灯片
-        //     slidesWrapper.style.transform = 'translateX(' + slideMove + 'px)';
-            
-        //     // 更新圆点按钮状态
-        //     dots[n-1].className += " active";
-        // }
-
-
-
-  // Get the modal element
-  // var modal = document.getElementById("myModal");
-  var overlay = document.getElementById("overlay");
-  var span = document.getElementsByClassName("close")[0];
-
-
-  // Get the image element and the close button element
-  //  // display the GIF as it is
-  // var img = document.getElementById("modalImg");
-  // var img = document.getElementById("overlayImg");
-  // Add event listeners to each GIF element
-  var gifs = document.getElementsByClassName("mygif");
-  for (var i = 0; i < gifs.length; i++) {
-  gifs[i].addEventListener("click", function() {
-      //  // display the GIF as it is
-      // // Set the modal image source and display the modal
-      // img.src = this.src;
-
-      // display the GIF as a new image, will play from the begining
-      var img = document.createElement("img");
-      img.src = this.src.replace(".png", ".gif");
-
-      // Add the img element to the overlay content and display the overlay
-      document.getElementById("overlayContent").appendChild(img);
-      
-
-      // modal.style.display = "block";
-      overlay.style.display = "block";
-
-      // Hide the body overflow
-              document.body.style.overflow = "hidden";
-  });
-  }
-
-  // Add event listener to close button
-  span.addEventListener("click", function() {
-  // Remove the img element from the overlay content, hide the overlay, and restore the body overflow
-          document.getElementById("overlayContent").innerHTML = "";
-
-  // Hide the modal
-  // modal.style.display = "none";
-  overlay.style.display = "none";
-  document.body.style.overflow = "auto";
-  });
-
-
-
-</script>
-</body>
+  </body>
 </html>
