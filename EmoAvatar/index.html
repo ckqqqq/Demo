@@ -52,6 +52,34 @@
         }
       }
     </style>
+    <style>
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+.video-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.video-responsive {
+    flex: 1 1 45%; /* 每个视频最多占45%，自动换行 */
+    min-width: 300px; /* 最小宽度，防止太窄 */
+    max-width: 48%;
+    box-sizing: border-box;
+}
+</style>
   </head>
 
   <body
@@ -228,78 +256,63 @@
 
     <div class="content">
       <h2 style="text-align: center"><strong>Gallery</strong></h2>
-
+<!-- https://youtu.be/5XnBMh4EcCQ -->
       <h3>dialogue between two people</h3>
       <div class="gallery">
         <div class="row" style="margin-bottom: 20px">
-          <video width="433" height="323" controls>
-            <source
-              src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/natural_talk1.mp4"
-              type="video/mp4"
-            />
-          </video>
-          <video width="433" height="323" controls>
-            <source
-              src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/natural_talk2.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <div class="video-responsive">
+            <iframe src="https://www.youtube.com/embed/5XnBMh4EcCQ" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="video-responsive">
+            <iframe src="https://www.youtube.com/embed/5XnBMh4EcCQ" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
 
       <h3>short conversations</h3>
       <div class="gallery">
         <div class="row" style="margin-bottom: 20px">
-          <video width="433" height="323" controls>
-            <source
-              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/short_1_model_5.mp4"
-              type="video/mp4"
-            />
-          </video>
-          <video width="433" height="323" controls>
-            <source
-              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/short_2_model_5.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <div class="video-responsive">
+            <iframe src="https://www.youtube.com/embed/cfH1adPeZYA" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <!-- https://youtu.be/cfH1adPeZYA -->
+          <!-- https://youtu.be/84RFmX8XyL8 -->
+          <div class="video-responsive">
+            <iframe src="https://www.youtube.com/embed/84RFmX8XyL8" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
 
       <h3>general conversations with paralanguage</h3>
       <div class="gallery">
         <div class="row" style="margin-bottom: 20px">
-          <video width="433" height="323" controls>
-            <source
-              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/middle_1_model_5.mp4"
-              type="video/mp4"
-            />
-          </video>
-          <video width="433" height="323" controls>
-            <source
-              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/middle_2_model_5.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <div class="video-responsive">
+            <iframe src="https://www.youtube.com/embed/qmOcgVzWunA" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <!-- https://youtu.be/qmOcgVzWunA -->
+          <div class="video-responsive">
+            <iframe src="https://www.youtube.com/embed/dZKp_7m0z7Y" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <!-- https://youtu.be/dZKp_7m0z7Y -->
         </div>
       </div>
 
       <h3>long video</h3>
       <div class="gallery">
         <div class="row">
-          <video width="433" height="323" controls>
-            <source
-              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/long_1_model_5.mp4"
-              type="video/mp4"
-            />
-          </video>
-          <video width="433" height="323" controls>
-            <source
-              src="EchoMimic_Lifelike_Audio_Driven_Portrait_Animations_files/demo_videos/chinese/long_2_model_5.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <div class="video-responsive">
+            <iframe src="https://www.youtube.com/embed/6fhEbouIPlc" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <!-- https://youtu.be/6fhEbouIPlc -->
+          <div class="video-responsive">
+            <iframe src="https://www.youtube.com/embed/W3dbJitPuN4" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <!-- https://youtu.be/W3dbJitPuN4 -->
         </div>
       </div>
     </div>
+    <!-- <div class="video-responsive">
+    <iframe src="https://www.youtube.com/embed/cfH1adPeZYA" frameborder="0" allowfullscreen></iframe> -->
+</div>
   </body>
 </html>
