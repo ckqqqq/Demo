@@ -183,6 +183,24 @@
         .checklist li {
             margin: 6px 0;
         }
+
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 
@@ -200,8 +218,8 @@
                 agents to streamline and automate complex workflows, enhancing efficiency and productivity for data
                 management.</p>
         </section>
-         <!-- 可视化GIF展示区域 -->
-         <section>
+        <!-- 可视化GIF展示区域 -->
+        <section>
             <!-- <h2 style="text-align: center"><strong>DataJarvis Demonstrations</strong></h2> -->
 
             <!-- 基础功能：绘制图表和解释 -->
@@ -366,6 +384,23 @@
                 <li>Dependency Management</li>
             </ul>
         </section>
+        <section>
+            <h2>DataJarvis Demo Video</h2>
+            <p>Watch DataJarvis in action! This demonstration showcases the core capabilities of our LLM-powered
+                autonomous agent system for data workflows.</p>
+
+            <div class="video-responsive">
+                <iframe src="https://www.youtube.com/embed/n7j3jYkUY0s" title="DataJarvis Demo Video" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div style="margin-top: 20px; text-align: center;">
+                <p class="muted">Experience the power of DataJarvis: from natural language queries to automated data
+                    analysis and visualization</p>
+            </div>
+        </section>
 
         <section>
             <h2>TO-DO &amp; Done</h2>
@@ -440,7 +475,7 @@
             </div>
         </section>
 
-       
+
 
         <section>
             <h2>Plan</h2>
