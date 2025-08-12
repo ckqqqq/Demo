@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DataJarvis - LLM-powered Agent System</title>
+    <style>
+        :root {
+            --text: #1f2937;
+            --muted: #4b5563;
+            --bg: #ffffff;
+            --border: #e5e7eb;
+            --brand: #2563eb;
+            --code-bg: #0b1020;
+            --code-fg: #e6e8ee;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 32px 20px 80px;
+        }
+
+        header.hero {
+            padding: 40px 0 10px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin: 0 0 10px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin: 28px 0 12px;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin: 22px 0 8px;
+        }
+
+        p {
+            margin: 10px 0;
+            color: var(--text);
+        }
+
+        ul,
+        ol {
+            padding-left: 22px;
+        }
+
+        a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .block {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 18px;
+            background: #fafafa;
+        }
+
+        .img-wrap {
+            margin: 14px 0;
+        }
+
+        .img-wrap img {
+            width: 60%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        code {
+            padding: 2px 6px;
+            border-radius: 6px;
+            background: #f3f4f6;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-fg);
+            padding: 14px 16px;
+            border-radius: 10px;
+            overflow: auto;
+            border: 1px solid #121831;
+        }
+
+        pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .img-wrap img {
+                width: 100%;
+            }
+        }
+
+        .kpi-list li {
+            margin: 6px 0;
+        }
+
+        .checklist li {
+            margin: 6px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1>DataJarvis</h1>
+            <p class="muted">LLM-powered autonomous agent system for data workflows</p>
+        </header>
+
+        <section>
+            <h2>What is DataJarvis</h2>
+            <p>The <strong>DataJarvis</strong> is a LLM-powered (large language model) autonomous <strong>agent
+                    system</strong> designed by the BingViz-Data team. DataJarvis utilizes the capabilities of LLM
+                agents to streamline and automate complex workflows, enhancing efficiency and productivity for data
+                management.</p>
+        </section>
+
+        <section>
+            <h2>Agent → Agent Flow → DataJarvis</h2>
+            <p><strong>Agent is the fundamental unit of DataJarvis.</strong> The <strong>LLM</strong> (e.g., Copilot /
+                GPT-4) functions as the agent’s brain, integrated with <strong>memory</strong>, <strong>tools</strong>
+                and a <strong>planning</strong> framework. An agent can be used to solve an atomic task in a specific
+                field (e.g., PGSQL code generation, draw bar chart).</p>
+            <p>For a complicated task, <strong>multiple agents constitute an agent flow</strong>, where data moves from
+                upstream to downstream. A complicated task is decomposed into many atomic tasks and assigned to various
+                agents in the flow. The agents share tools and memory. The agent flow is a pipeline framework that
+                solves a complex problem step by step — a powerful general problem solver.</p>
+        </section>
+
+        <section>
+            <h2>Agent Overview</h2>
+            <p><strong>Agent = LLM + Planning + Tools + Memory</strong></p>
+            <div class="img-wrap">
+                <img src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/image-20240711203830651.png"
+                    alt="Agent overview diagram" />
+            </div>
+            <h3>Planning</h3>
+            <ul>
+                <li><strong>Chain of Thought</strong> (CoT; <a href="https://arxiv.org/abs/2201.11903" target="_blank"
+                        rel="noopener">Wei et al. 2022</a>): the LLM generates step-by-step reasoning to guide complex
+                    code generation. Agents in DataJarvis follow the ReAct (<a href="https://arxiv.org/abs/2210.03629"
+                        target="_blank" rel="noopener">Yao et al. 2023</a>) framework, adhering to a <em>think → action
+                        → observation</em> loop. (Done)</li>
+                <li><strong>Task decomposition</strong>: the agent breaks down large tasks into smaller, manageable
+                    subgoals. (Done, Auto reasoning - TODO)</li>
+                <li><strong>Reflection and refinement</strong>: the agent performs self-criticism and reflection (<a
+                        href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener">Shinn &amp; Labash
+                        2023</a>), learns from mistakes, and improves future steps. (Done)</li>
+            </ul>
+            <h3>Memory</h3>
+            <ul>
+                <li><strong>Short-term memory</strong>: the code generation agent will be finetuned on local PGSQL
+                    dataset from Grafana. (SQL exported, waiting training)</li>
+                <li><strong>Long-term memory</strong>: tools and knowledge are stored for RAG (<a
+                        href="https://www.promptingguide.ai/techniques/rag" target="_blank" rel="noopener">Lewis et al.
+                        2021</a>) and tool learning (<a href="https://arxiv.org/abs/2303.09014" target="_blank"
+                        rel="noopener">Paranjape et al., 2023</a>).</li>
+            </ul>
+            <h4>How Graph RAG Constructs Vectors</h4>
+            <ol>
+                <li><strong>Data Retrieval</strong>: retrieve relevant data from a knowledge base.</li>
+                <li><strong>Data Integration</strong>: integrate retrieved data with the input context.</li>
+                <li><strong>Vector Generation</strong>: generate high-quality vectors representing entities and
+                    relations.</li>
+            </ol>
+            <h3>Tool use &amp; Tool build</h3>
+            <ul>
+                <li><strong>Tool-learning</strong> (<a href="https://arxiv.org/pdf/2304.08354" target="_blank"
+                        rel="noopener">Qin et al., 2023</a>): learn to call external APIs for missing knowledge,
+                    including local information (Bingviz SQL Table/Wiki), code execution (PGSQL &amp; Python), and
+                    access to open-source tools (ECharts / Pandas). (Done)</li>
+            </ul>
+            <div class="img-wrap">
+                <img src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/image-20240719111727108.png"
+                    alt="Tool use diagram" />
+            </div>
+            <ul>
+                <li><strong>Tool Users as Tool Makers</strong> (<a href="https://arxiv.org/abs/2305.17126"
+                        target="_blank" rel="noopener">Cai et al., 2023</a>): agents learn how to use provided tools
+                    (e.g., ECharts for visual agent). (Done)</li>
+            </ul>
+            <div class="block">
+                <strong>Function call and Tool use (OpenAPI Integration)</strong>
+                <ol>
+                    <li>Trigger tools when the response requires it.</li>
+                    <li>Implement custom tools for tasks (e.g., DB queries, running tests).</li>
+                    <li>Integrate tool responses back into conversation context.</li>
+                </ol>
+                <p class="muted" style="margin:0">Future: allow users to build tools in real time; Tool Maker Agent
+                    saves tools for reuse (TODO)</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Agent Flow Overview</h2>
+            <ul class="kpi-list">
+                <li><strong>Chart Agent Flow</strong> = Code Agent → PGSQL Agent → Visual Agent</li>
+                <li><strong>Explain Agent Flow</strong> = Code Agent → PGSQL Agent → Explain Agent</li>
+            </ul>
+            <div class="img-wrap">
+                <img src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/image-20240711231259532.png"
+                    alt="Agent flow diagram" />
+            </div>
+            <p>In the current DataJarvis, specific agents within an agent flow rely on magic commands for activation
+                (e.g., <code>$run</code>, <code>$explain</code>). In the future, DataJarvis will be able to
+                automatically generate agent flows with planning (task decomposition) ability.</p>
+        </section>
+
+        <section>
+            <h2>Technical Architecture of DataJarvis</h2>
+            <h3>Frontend: Streamlit</h3>
+            <h4>Advantages</h4>
+            <ul>
+                <li>Ease of Use</li>
+                <li>Integration with Python</li>
+                <li>Interactive Widgets</li>
+                <li>Open Source</li>
+            </ul>
+            <h4>Disadvantages</h4>
+            <ul>
+                <li>Performance limitations at very large scale</li>
+                <li>Limited deployment options</li>
+            </ul>
+            <h3>Backend: Python on Azure Web App</h3>
+            <h4>Advantages</h4>
+            <ul>
+                <li>Scalability</li>
+                <li>Integration with Azure Services</li>
+                <li>Security</li>
+                <li>Developer Productivity</li>
+            </ul>
+            <h4>Disadvantages</h4>
+            <ul>
+                <li>Cost</li>
+                <li>Complexity</li>
+                <li>Dependency Management</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>TO-DO &amp; Done</h2>
+            <ul class="checklist">
+                <li>🔥 June 4, 2024: Azure credential for GPT-4 ✅</li>
+                <li>🔥 June 5, 2024: Scala generation explore ✅</li>
+                <li>🔥 June 8, 2024: Databricks-PGSQL explore ✅</li>
+                <li>🔥 June 10, 2024: PGSQL prompt for table understanding ✅</li>
+                <li>🔥 June 11, 2024: example for simple question pipeline ✅</li>
+                <li>🔥 June 12, 2024: grafana export SQL and transfromation ✅</li>
+                <li>🔥 June 15, 2024: prompt engineering for 2 stage generation ✅</li>
+                <li>🔥 June 20, 2024: Repos created + homepage ✅</li>
+                <li>🔥 June 21, 2024: PGSQL code executor ✅</li>
+                <li>🔥 June 24, 2024: Text2PGSQL agent for dau ✅</li>
+                <li>🔥 June 29, 2024: Text2PGSQL agent for miniapp ✅</li>
+                <li>🔥 June 29, 2024: Pandas dataframe renderer for chart interaction (csv, search, replace) ✅</li>
+                <li>🔥 July 3, 2024: Chart explainer for explain result from PGSQL ✅</li>
+                <li>🔥 July 3, 2024: Bar / Line / Pie ECharts supported ✅</li>
+                <li>🔥 July 5, 2024: Code editor ✅</li>
+                <li>🔥 July 10, 2024: Add about Page ✅</li>
+                <li>📚 July 12, 2024: chat with Grafana ✅</li>
+            </ul>
+            <!-- <div class="img-wrap">
+                <img src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/image-20240719111844896.png"
+                    alt="Grafana chat screenshot" />
+            </div> -->
+            <ul class="checklist">
+                <li>📚 July 19, 2024: Chat with Tool User ✅</li>
+                <li>📚 ToDo: Finetuning in BingViz PGSQL dataset for generalization (P0)</li>
+                <li>📚 ToDo: Visual agent flow webfront</li>
+                <li>📚 ToDo: Automatic agent flow</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Tutorial &amp; Example</h2>
+            <h3>PGSQL code generation</h3>
+            <pre><code>What are the dau of Bing-Android, Start-Android in recent 7 days?</code></pre>
+            <div class="img-wrap">
+                <img src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/image-20240711232610316.png"
+                    alt="PGSQL code generation example" />
+            </div>
+
+            <h3>Run PGSQL</h3>
+            <pre><code>$run</code></pre>
+            <div class="img-wrap">
+                <img src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/image-20240711232702981.png"
+                    alt="Run PGSQL screenshot" />
+            </div>
+
+            <h3>Explain the data</h3>
+            <pre><code>$explain$ please explain chart in 100 words</code></pre>
+            <div class="img-wrap">
+                <img src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/image-20240711232949701.png"
+                    alt="Explain chart screenshot" />
+            </div>
+
+            <h3>Draw EChart for data visualization</h3>
+            <pre><code>$visual$ please draw a pie chart.</code></pre>
+            <div class="img-wrap">
+                <img src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/image-20240711225820282.png"
+                    alt="ECharts pie chart" />
+            </div>
+
+            <h3>Use Tool</h3>
+            <pre><code>$usetool$ Please generate daily check report on July 10th, 2024.</code></pre>
+            <div class="grid-2 img-wrap">
+                <img src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/image-20240719110740082.png"
+                    alt="Tool use 1" />
+                <img src="https://ckqqqq-qiker-image-service.oss-cn-beijing.aliyuncs.com/typora-image/image-20240719111322732.png"
+                    alt="Tool use 2" />
+            </div>
+        </section>
+
+        <section>
+            <h2>Plan</h2>
+            <ul>
+                <li>Finetuning in BingViz PGSQL dataset for generalization</li>
+                <li>Long memory: Graph RAG building for complex data query</li>
+                <li>Query optimize for multiple query</li>
+                <li>Tool build: Titan and Kusto support</li>
+                <li>Automated Data Cleaning and Preprocessing Pipelines</li>
+                <li>Real-time Analytics and Dashboarding: Speed optimize</li>
+                <li>Cross-domain Transfer Learning</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Related Work</h2>
+            <ul>
+                <li><a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener">AutoGen | AutoGen</a>:
+                    An Open-Source Programming Framework for Agentic AI</li>
+                <li><a href="https://github.com/yoheinakajima/babyagi" target="_blank"
+                        rel="noopener">yoheinakajima/babyagi</a>: The Baby AGI uses OpenAI and vector DBs to create,
+                    prioritize, and execute tasks</li>
+                <li><a href="https://github.com/Significant-Gravitas/AutoGPT" target="_blank"
+                        rel="noopener">Significant-Gravitas/AutoGPT</a>: A generalist LLM-based AI agent that can
+                    autonomously accomplish minor tasks</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Reference</h2>
+            <ul>
+                <li><a href="https://www.promptingguide.ai/" target="_blank" rel="noopener">Prompting Guide</a></li>
+                <li><a href="https://lilianweng.github.io/" target="_blank" rel="noopener">Lil'Log (Lilian Weng)</a>
+                </li>
+                <li><a href="https://ai.meta.com/blog/retrieval-augmented-generation-streamlining-the-creation-of-intelligent-natural-language-processing-models/"
+                        target="_blank" rel="noopener">Meta AI: Retrieval Augmented Generation</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Issue</h2>
+            <p>If you have any issues, please contact <a
+                    href="mailto:kexin.chen@microsoft.com">kexin.chen@microsoft.com</a> or <a
+                    href="mailto:ckqqqq@bupt.edu.cn">ckqqqq@bupt.edu.cn</a>.</p>
+        </section>
+    </div>
+</body>
+
+</html>
