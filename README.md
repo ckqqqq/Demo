@@ -1,6 +1,6 @@
 # Keqi's Demos
-- [EmoAvatar 超写实情感对话虚拟人 (ACMMMM比赛)](https://ckqqqq.github.io/Demo/EmoAvatar/)
-  * Demo: ACMMMM论文已接收，比赛第二名。 (https://ckqqqq.github.io/Demo/EmoAvatar/)
+- [EmoAvatar 超写实情感对话虚拟人 (ACMMMM 中稿)](https://ckqqqq.github.io/Demo/EmoAvatar/)
+  * Demo: ACMMMM 虚拟人情感回复赛道银牌\ 共情对话赛道铜牌。 (https://ckqqqq.github.io/Demo/EmoAvatar/)
 - [基于创意视频编排智能体 (淘天实习)]
 - [NeuroSteer 语言模型行为量化干预器 (代表作)](https://ckqqqq.github.io/Demo/NeuroSteer)
   * Demo: https://ckqqqq.github.io/Demo/NeuroSteer   
