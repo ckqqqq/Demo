@@ -207,16 +207,36 @@
 <body>
     <div class="container">
         <header class="hero">
-            <h1>DataJarvis</h1>
+            <h1>DataJarvis <small>(prev. Kingfisher)</small></h1>
             <p class="muted">LLM-powered autonomous agent system for data workflows</p>
         </header>
 
         <section>
-            <h2>What is DataJarvis</h2>
-            <p>The <strong>DataJarvis</strong> is a LLM-powered (large language model) autonomous <strong>agent
-                    system</strong> designed by the BingViz-Data team. DataJarvis utilizes the capabilities of LLM
-                agents to streamline and automate complex workflows, enhancing efficiency and productivity for data
-                management.</p>
+            <h2>Reliable SQL generation for industrial data workflows</h2>
+            <p>Developed during a Microsoft STCA internship (Mar.–Oct. 2024), DataJarvis addresses the difficulty of generating long, complex SQL queries reliably with 2024-era LLMs.</p>
+            <ul>
+                <li><strong>Agent–SQL protocol:</strong> Designed a protocol that gives the agent visibility into the database environment and supports database interaction.</li>
+                <li><strong>Reliability:</strong> Combined reasoning, tool use, execution feedback, and self-criticism to improve SQL generation reliability.</li>
+                <li><strong>Production impact:</strong> Integrated into Copilot data management for distributed Spark databases, reducing analysis time from <strong>1–2 days to 20 minutes</strong>.</li>
+            </ul>
+            <p><a href="#demo-video">Watch the recorded demo</a> · <a href="#technical-details">Explore the architecture</a></p>
+        </section>
+        <section id="demo-video">
+            <h2>DataJarvis Demo Video</h2>
+            <p>Watch DataJarvis in action! This demonstration showcases the core capabilities of our LLM-powered
+                autonomous agent system for data workflows.</p>
+
+            <div class="video-responsive">
+                <iframe src="https://www.youtube.com/embed/n7j3jYkUY0s" title="DataJarvis Demo Video" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div style="margin-top: 20px; text-align: center;">
+                <p class="muted">Experience the power of DataJarvis: from natural language queries to automated data
+                    analysis and visualization</p>
+            </div>
         </section>
         <!-- 可视化GIF展示区域 -->
         <section>
@@ -267,7 +287,7 @@
         </section>
 
         <section>
-            <h2>Agent → Agent Flow → DataJarvis</h2>
+            <h2 id="technical-details">Agent → Agent Flow → DataJarvis</h2>
             <p><strong>Agent is the fundamental unit of DataJarvis.</strong> The <strong>LLM</strong> (e.g., Copilot /
                 GPT-4) functions as the agent’s brain, integrated with <strong>memory</strong>, <strong>tools</strong>
                 and a <strong>planning</strong> framework. An agent can be used to solve an atomic task in a specific
@@ -384,26 +404,10 @@
                 <li>Dependency Management</li>
             </ul>
         </section>
-        <section>
-            <h2>DataJarvis Demo Video</h2>
-            <p>Watch DataJarvis in action! This demonstration showcases the core capabilities of our LLM-powered
-                autonomous agent system for data workflows.</p>
 
-            <div class="video-responsive">
-                <iframe src="https://www.youtube.com/embed/n7j3jYkUY0s" title="DataJarvis Demo Video" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
-            </div>
-
-            <div style="margin-top: 20px; text-align: center;">
-                <p class="muted">Experience the power of DataJarvis: from natural language queries to automated data
-                    analysis and visualization</p>
-            </div>
-        </section>
 
         <section>
-            <h2>TO-DO &amp; Done</h2>
+            <details><summary>Development archive — June–July 2024</summary>
             <ul class="checklist">
                 <li>🔥 June 4, 2024: Azure credential for GPT-4 ✅</li>
                 <li>🔥 June 5, 2024: Scala generation explore ✅</li>
@@ -433,7 +437,7 @@
                 <li>📚 ToDo: Visual agent flow webfront</li>
                 <li>📚 ToDo: Automatic agent flow</li>
             </ul>
-        </section>
+        </details></section>
 
         <section>
             <h2>Tutorial &amp; Example</h2>

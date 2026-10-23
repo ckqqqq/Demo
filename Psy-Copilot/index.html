@@ -351,8 +351,8 @@
             Psy-Copilot: <br> Visual Chain Of Thought for Counseling</h2>
           <div class="is-size-5">
             <span class="author-block" style="color:#00A4EF;font-weight:normal;">
-              Anonymous Team <sup>*</sup><sup>&#x2660;</sup>
-            </span>, 
+              <a href="https://arxiv.org/abs/2503.03645">Keqi Chen et al.</a>
+            </span> 
             <!-- <span class="author-block" style="color:#00A4EF;font-weight:normal;">
               Xin Xu<sup>*</sup><sup>&#x2660;</sup>
             </span>, 
@@ -373,7 +373,7 @@
           <br>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <sup>&#x2660;</sup>Anonymous University
+              arXiv preprint · 2025
             </span>
             <!-- <span class="author-block">
               <sup>&#x2661;</sup>National University of Singapore, NUS-NCS Joint Lab
@@ -383,17 +383,14 @@
             </span> -->
           </div>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>*</sup>Equal Contribution</span>
-            <span class="author-block"><sup>&dagger;</sup>Corresponding Author</span>
-          </div>
+
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
                 <!-- code2024/Psy-Copilot/docs/psy-copilot/doc/Psy_Copilot__Visual_Chain_Of_Thought_for_Counseling.pdf -->
-                <a href="https://github.com/ckqqqq/Psy-Copilot/tree/master/docs/paper/Psy_Copilot__Visual_Chain_Of_Thought_for_Counseling.pdf" 
+                <a href="https://arxiv.org/abs/2503.03645"
                    class="external-link button is-normal is-rounded">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -439,7 +436,7 @@
                   <span class="icon">
                       <img src="./images/twitter.png" alt="Drive" style="height: 17px; width: 17px; vertical-align: middle;"/>
                   </span>
-                <span>Demo</span>
+                <span>Recorded Demo</span>
                 </a>
               </span>
             </div>
@@ -486,16 +483,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <p>
-            The datasets of mental support are particularly scarce, especially for Chinese multi-turn dialogue. The Psy-Insight dataset alleviates the scarcity of multi-turn Chinese and English counseling data. The Psy-Insight includes bilingual labels for five types of tasks in emotional support. However, we only conducted experiments in Chinese and English for dialogue fine-tuning (Task 3) and RAG(Task 4) tasks. 
-            <!-- As Natural Language Processing (NLP) systems are increasingly employed in intricate social environments, a pressing query emerges: <strong><i style="color: red;">Can these NLP systems mirror human-esque collaborative intelligence, in a multi-agent society consisting of multiple large language models (LLMs)?</i></strong> This paper probes the collaboration mechanisms among contemporary NLP systems by melding practical experiments with theoretical insights. 
-            We fabricate four unique 'societies' comprised of LLM agents, 
-            where each agent is characterized by a specific 'trait' ( 
-              <img src="images/easygoing.png" alt="Logo" style="height: 15px; width: 18px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; color: red; text-decoration: underline;">easy-going</span> or 
-              <img src="images/overconfident.png" alt="Logo" style="height: 16px; width: 21px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; color: blue; text-decoration: underline;">overconfident</span> ) and engages in collaboration with a distinct 'thinking pattern' 
-              (<img src="images/debate.png" alt="Logo" style="height: 15px; width: 15px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; text-decoration: underline;">debate</span> or 
-                <img src="images/reflection.png" alt="Logo" style="height: 16px; width: 16px; vertical-align: middle;"> <span style="font-style: italic; font-weight: bold; text-decoration: underline;">reflection</span>). Through evaluating these multi-agent societies on three benchmark datasets, we discern that certain collaborative strategies not only outshine previous top-tier approaches, but also optimize efficiency (using fewer API tokens). Moreover, our results further illustrate that LLM agents manifest human-like social behaviors, such as conformity and consensus reaching, mirroring foundational social psychology theories. In conclusion, we integrate insights from social psychology to contextualize the collaboration of LLM agents, inspiring further investigations into the collaboration mechanism for LLMs.  -->
-          </p>
+          <p>Psy-Copilot is a graph-retrieval assistant for collaboration between human therapists and LLMs. We constructed Psy-COT to organize counseling dialogues and explanatory annotations, preserving causal links and strategy transitions. Two-stage retrieval over dialogue and reasoning indexes provides response candidates, similar cases, and related counseling strategies. The interface displays relevant retrieval subgraphs alongside generated responses, making the supporting information traceable.</p>
         </div>
       </div>
     </div>
@@ -518,7 +506,7 @@
               <div class="slide">
                   <img src="./images/psy-copilot/Overview2.png" alt="First Slide">
                   <br><br>
-                  <div><b>Figure 2: Overview of indexes in Psy-COT and retrieval progress in Psy-Copilot. Psy-COT has two vector indexes for dialog and COT reasoning content respectively. There is a two-stage retrieval argument generation in Psy-Copilot.</b></div>
+                  <div><b>Figure 2: Overview of indexes in Psy-COT and retrieval progress in Psy-Copilot. Psy-COT has two vector indexes for dialog and COT reasoning content respectively. There is a two-stage retrieval-augmented generation in Psy-Copilot.</b></div>
                   <br>
                   <!-- <p align="left">这是左对齐的段落。</p> -->
                   <br><br><br><br>
@@ -557,7 +545,7 @@
             <div class="slide">
                   <img src="./images/psy-copilot/tmp3848.png" alt="Third Slide">
                   <br><br><br>
-                  <p style="text-align: left; padding-bottom: 15px;">This figure illustrates the objective evaluation results of Psy-Copilot generated result. Psy-Copilot-Dialog scoring 8.5 for Fluency, 7.4 for Helpfulness, 7.2 for Naturalness, and 8.2 for Comforting Effectiveness. The Psy-Copilot-COT variant showed even higher scores, achieving 8.6 for Fluency and 7.5 for Helpfulness, with a slight drop to 7.0 for Naturalness but a higher 7.9 for Comforting Effectiveness. These results indicate that Psy-Copilot not only meets but exceeds the performance of existing models, showcasing its potential to enhance the synergy between AI and human therapists in providing psychological support.
+                  <p style="text-align: left; padding-bottom: 15px;">This figure illustrates the objective evaluation results of Psy-Copilot generated result. Psy-Copilot-Dialog scoring 8.5 for Fluency, 7.4 for Helpfulness, 7.2 for Naturalness, and 8.2 for Comforting Effectiveness. The Psy-Copilot-COT variant showed mixed results, achieving 8.6 for Fluency and 7.5 for Helpfulness, with a slight drop to 7.0 for Naturalness and a lower 7.9 for Comforting Effectiveness. These results show trade-offs between the dialogue and reasoning variants across the four evaluation dimensions.
                   <br><br><br><br>
               </div>
           </div>
@@ -696,7 +684,7 @@
                         <ul style="padding-left: 40px; list-style-type: none; padding-right: 60px;text-align: left;">
                           
                           <br><br>
-                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. The effectiveness of Psy-Copilot's two-stage retrieval argument generation process is evident in the high scores, suggesting that the combination of dialogue and reasoning content retrieval is a robust approach for generating counseling responses.</span></li>
+                          <li style="margin-bottom: 15px; margin-top: 15px;"><span style="font-weight: bold; font-style: italic; ">1. The effectiveness of Psy-Copilot's two-stage retrieval-augmented generation process is evident in the high scores, suggesting that the combination of dialogue and reasoning content retrieval is a robust approach for generating counseling responses.</span></li>
                           <!-- The open-sourcing of Psy-Copilot's code and demo can accelerate research and development in AI-assisted therapy, allowing for broader collaboration and innovation within the field. -->
 
                           <li style="margin-bottom: 15px;"><span style="font-weight: bold; font-style: italic;">2. The Psy-Copilot's can allow for broader AI-Therapist collaboration in the field of emotional support conversation.</span></li>
@@ -740,17 +728,14 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>
-      @article{Psy-Insight,
-        author       = {Anomyous until 2023-11-15},
-        title        = {Psy-Copilot: Visual Chain Of Thought for Counseling},
-        journal      = {AAAI},
-        volume       = {},
-        year         = {2024},
-        url          = {},
-        doi          = {}
-      }      
-</code></pre>
+    <pre><code>@misc{psycopilot2025,
+  title = {Psy-Copilot: Visual Chain of Thought for Counseling},
+  author = {Keqi Chen and Zekai Sun and Huijun Lian and Yingming Gao and Ya Li},
+  year = {2025},
+  eprint = {2503.03645},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2503.03645}
+}</code></pre>
   </div>
 </section>
 
